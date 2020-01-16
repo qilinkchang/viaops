@@ -1,0 +1,13 @@
+{
+  "contents": [{
+    "fileref": "ModelContentFile0",
+    "name": "default"
+  }],
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "",
+    "modelStatus": "new",
+    "name": "New Model 1"
+  }
+}
