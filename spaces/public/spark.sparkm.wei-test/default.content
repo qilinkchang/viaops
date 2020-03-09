@@ -13,14 +13,14 @@
       </Pipe>
     </Pipes>
     <Flows>
-      <Flow index="1000" uuid="Main" isNested="false" revision="0" name="Main" showFooter="true">
+      <Flow index="1000" uuid="Main" isNested="false" revision="2" name="Main" showFooter="true">
       <Codes>
       </Codes>
       <Libraries>
       </Libraries>
       <Resources>
       </Resources>
-      <Properties>[]</Properties>
+      <Properties>[{"name":"property","label":"Input","type":"string","editorType":"textInput","group":"common","*":{"label":"label","desc":"desc"},"value":"aaaa"}]</Properties>
       </Flow>
     </Flows>
   </ModelInfo>
