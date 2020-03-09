@@ -1,0 +1,27 @@
+<DataPipeModel description="Description of New Model 45" name="wei-test" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="true" useHive="auto" batchDuration="P1M" checkpoint="" batchSampling="true" sparkMasterHost="">
+  <HiveConfig>
+    <Properties>
+      <Property name="hive.warehouse.hdfs.source" value=""/>
+      <Property name="hive.metastore.data.source" value=""/>
+      <Property name="hive.server2.thrift.port" value=""/>
+      <Property name="hive.db.schema" value=""/>
+    </Properties>
+  </HiveConfig>
+  <ModelInfo validated="true">
+    <Pipes>
+      <Pipe index="1000" uuid="" name="(main)">
+      </Pipe>
+    </Pipes>
+    <Flows>
+      <Flow index="1000" uuid="Main" isNested="false" revision="0" name="Main" showFooter="true">
+      <Codes>
+      </Codes>
+      <Libraries>
+      </Libraries>
+      <Resources>
+      </Resources>
+      <Properties>[]</Properties>
+      </Flow>
+    </Flows>
+  </ModelInfo>
+</DataPipeModel>
