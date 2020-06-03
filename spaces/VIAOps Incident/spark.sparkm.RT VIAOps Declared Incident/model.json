@@ -1,0 +1,33 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1591082883906",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"declared\" algorithm",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357",
+    "modelStatus": "invalid",
+    "name": "RT VIAOps Declared Incident",
+    "subflowReg": "",
+    "typeDeps": "{\"dependencies\":[\"viaops.incident_out\",\"viaops.incident_store\",\"viaops.incident_for_grouping\",\"viaops.incident_summary\"],\"contributes\":[\"viaops.incident_summary\"]}",
+    "typeReg": "",
+    "vtui:flags": "31"
+  }
+}

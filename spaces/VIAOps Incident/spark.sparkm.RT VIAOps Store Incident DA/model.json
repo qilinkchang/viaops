@@ -1,0 +1,31 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1591152340270",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Store Incident DA Result to Hive Table",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Parse Incident@35",
+    "modelStatus": "valid",
+    "name": "RT VIAOps Store Incident DA",
+    "subflowReg": "",
+    "typeReg": ""
+  }
+}

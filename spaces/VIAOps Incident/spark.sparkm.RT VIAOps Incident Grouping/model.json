@@ -1,0 +1,33 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1591152256391",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Grouping Incident(s) for Notification",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Parse Incident@35",
+    "modelStatus": "valid",
+    "name": "RT VIAOps Incident Grouping",
+    "subflowReg": "",
+    "typeDeps": "{\"dependencies\":[\"viaops.incident_store\"],\"contributes\":[]}",
+    "typeReg": "",
+    "vtui:flags": "31"
+  }
+}

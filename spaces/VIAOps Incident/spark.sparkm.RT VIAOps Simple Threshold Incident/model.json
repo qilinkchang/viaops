@@ -1,0 +1,33 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1591082883906",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"simple_threshold\" algorithm",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Incident Conf@509,adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@582,adf.subflow:///viaops.incident/Simple Threshold Evaluation@444",
+    "modelStatus": "valid",
+    "name": "RT VIAOps Simple Threshold Incident",
+    "subflowReg": "",
+    "typeDeps": "{\"dependencies\":[\"viaops.raw_incident\",\"viaops.incident_config\",\"viaops.incident_summary\",\"viaops.incident_out\",\"viaops.incident_for_grouping\",\"viaops.incident_in\",\"viaops.incident_store\"],\"contributes\":[\"viaops.raw_incident\",\"viaops.incident_config\",\"viaops.incident_summary\",\"viaops.DA_out\"]}",
+    "typeReg": "{\"Main\":[{\"types\":[\"raw_incident\"],\"ns\":\"viaops\",\"f\":\"\"}]}",
+    "vtui:flags": "31"
+  }
+}

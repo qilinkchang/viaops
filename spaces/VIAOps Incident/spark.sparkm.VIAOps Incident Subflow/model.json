@@ -1,0 +1,33 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1591082883906",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Shared incident subflow for Simple Threshold and Score",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "",
+    "modelStatus": "valid",
+    "name": "VIAOps Incident Subflow",
+    "subflowReg": "{\"Incident Conf\":{\"revision\":\"509\",\"registered\":true,\"subflowPath\":\"viaops.incident\"},\"Incident Summary\":{\"revision\":\"357\",\"registered\":true,\"subflowPath\":\"viaops.incident\"},\"Dimension Analysis\":{\"revision\":\"582\",\"registered\":true,\"subflowPath\":\"viaops.incident\"},\"Parse Incident\":{\"revision\":\"35\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "typeDeps": "{\"dependencies\":[\"viaops.incident_in\",\"viaops.incident_store\",\"viaops.incident_out\",\"viaops.incident_notification\",\"viaops.incident_config\"],\"contributes\":[\"viaops.incident_config\"]}",
+    "typeReg": "{\"Incident Conf\":[{\"types\":[\"incident_config\"],\"ns\":\"viaops\",\"f\":\"c5c71d1b-36c7-4f3b-877f-32e4141eb73b\",\"l\":\"Incident Config Table\",\"p\":\"out\"}],\"Incident Summary\":[{\"types\":[\"incident_summary\"],\"ns\":\"viaops\",\"f\":\"\"}],\"Dimension Analysis\":[{\"types\":[\"DA_out\"],\"ns\":\"viaops\",\"f\":\"\"}],\"Parse Incident\":[]}",
+    "vtui:flags": "31"
+  }
+}

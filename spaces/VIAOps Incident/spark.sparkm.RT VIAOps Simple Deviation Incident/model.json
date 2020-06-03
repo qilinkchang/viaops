@@ -1,0 +1,33 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1590368948608",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"Simple Deviation\" algorithm",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@582,adf.subflow:///viaops.incident/Simple Deviation Evaluation@511,adf.subflow:///viaops.incident/Enrich Contextual Metric@607",
+    "modelStatus": "valid",
+    "name": "RT VIAOps Simple Deviation Incident",
+    "subflowReg": "",
+    "typeDeps": "{\"dependencies\":[\"viaops.incident_store\",\"viaops.incident_anomaly_source\",\"viaops.incident_in\",\"viaops.incident_out\",\"viaops.incident_summary\",\"viaops.incident_score_anomaly\",\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\"],\"contributes\":[\"viaops.incident_anomaly_source\",\"viaops.incident_summary\",\"viaops.DA_out\",\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\"]}",
+    "typeReg": "{\"Main\":[{\"types\":[\"incident_anomaly_source\"],\"ns\":\"viaops\",\"f\":\"1cab09b2-64b5-4a11-87b1-7d02780829e9\",\"l\":\"Parse Anomaly\",\"p\":\"out\"}]}",
+    "vtui:flags": "31"
+  }
+}

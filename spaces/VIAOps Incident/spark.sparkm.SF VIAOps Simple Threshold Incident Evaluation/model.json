@@ -1,0 +1,31 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1590554936342",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Provide subflow for simple threshold incident calculation.",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "",
+    "modelStatus": "valid",
+    "name": "SF VIAOps Simple Threshold Incident Evaluation",
+    "subflowReg": "{\"Simple Threshold Evaluation\":{\"revision\":\"444\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "typeReg": ""
+  }
+}

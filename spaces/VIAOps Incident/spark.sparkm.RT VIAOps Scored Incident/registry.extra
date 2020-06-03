@@ -1,0 +1,1 @@
+{"type": {"Main":[{"types":["incident_out","incident_in"],"ns":"viaops","f":""},{"types":["incident_store"],"ns":"viaops","f":"5e671a68-7040-486e-8e36-3dbd9713b6c6","l":"Normalize Incident History","p":"out"},{"types":["incident_for_grouping"],"ns":"viaops","f":"c394cdf3-5037-4d16-857e-755c9e537e65","l":"Prepare for Grouping","p":"out"}]}}

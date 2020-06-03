@@ -1,0 +1,31 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1590368948609",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Provide subflow for simple deviation incident calculation.",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "",
+    "modelStatus": "valid",
+    "name": "SF VIAOps Simple Deviation Incident Evaluation",
+    "subflowReg": "{\"Simple Deviation Evaluation\":{\"revision\":\"511\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "typeReg": ""
+  }
+}
