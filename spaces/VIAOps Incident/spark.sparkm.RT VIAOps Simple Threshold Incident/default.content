@@ -13,7 +13,7 @@
       </Pipe>
     </Pipes>
     <Flows>
-      <Flow index="1000" uuid="Main" isNested="false" revision="3648" name="Main" showFooter="true">
+      <Flow index="1000" uuid="Main" isNested="false" revision="3649" name="Main" showFooter="true">
         <Node index="1001" uuid="0ee586c9-b13f-4a8f-8bac-605db13f7258" type="Join" label="Identify Candidate Anomaly for Incident" x="212" y="120" width="130" height="115">
             <Source name="source1" uid="0" outputType="DStream" dataType="class:ParseAnomaly_Class">
               <DataSource category="#OUTPUT" id="undefined" name="out" nodeId="1cab09b2-64b5-4a11-87b1-7d02780829e9">
@@ -2042,7 +2042,7 @@
 {"subFlow":"remote:///viaops.incident/Dimension Analysis","p_rest_uri":"https://via1/vitria-oi/rest","p_svc_uri":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","p_username":"do_admin","p_password":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","retry_times":"3"}
 </Properties>
               <__subflow__>
-              <Flow index="1013" uuid="Dimension Analysis" isNested="true" revision="582" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
+              <Flow index="1013" uuid="Dimension Analysis" isNested="true" revision="596" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
                 <Node index="1013_2" uuid="c66f3e18-0529-47a2-8808-a1360292c0bf" type="inPort" label="In" x="220" y="92" width="70" height="40">
                     <Output name="Out" uid="0" outputType="DStream" dataType="class:viaops.incident_for_grouping" referenceType="viaops.incident_for_grouping">
                       <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -2171,96 +2171,96 @@
                         <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
                     </Output>
                     <Model isDynamicSchema="false">
-                      <Script><![CDATA[			val retval = source1.vtMap(
-			  x => {
-			    if(System.getProperty("disableCertificateValidatio_done")==null) {
-			      disableCertificateValidation
-			      System.setProperty("disableCertificateValidatio_done","true")
-			    }
-			    val token = getToken("${p_rest_uri}/login")
-			    val svcManifest = getSvcManifest("${p_rest_uri}"+"${p_svc_uri}".replaceAll(" ", "%20"),token)
-			    var incident_da : org.json4s.JObject = JObject.apply()
-			    var cntx_da : org.json4s.JObject = JObject.apply()
-			    var dimResultIsOk : Boolean = false
-			    implicit val formats = DefaultFormats   
-			    if (svcManifest != null) {
-			      import scala.util.parsing.json._
-			      val svcJson:Option[Any] = JSON.parseFull(svcManifest);
-			      val svcMap:Map[String,Map[String,String]] = svcJson.get.asInstanceOf[Map[String, Map[String,String]]]
-			      val da_uri = svcMap.get("DimensionAnalysis").get("url")
-			      
-			      val interval = Integer.parseInt(x.window.get.split("/")(1))*60
-			      val start_tm = x.start_tm.get
-			      val end_tm =  (if (x.end_tm.get != 0) x.end_tm.get else x.event_tm.get) + interval
-			      val cacheType = if (x.state =="Close") "persistent" else "transient"
-			      val dimFilters = JArray(List(
-			                                   (("name","$.metricID")~("value",x.metric_id)),
-			                                   (("name","$.cacheConfig")~("value",("key1"->x.id)~("key2"->"DA:#")~("type"->cacheType)~("force"->"true"))),
-			                                   (("name","data.timeRange")~("value","absolute:"+start_tm+"/"+ end_tm)),
-			                                   (("name","$.rankLimit")~("value",0)),
-			                                   (("name","$.excludeEventFilters")~("value",true)),
-			                                   (("name","$.dimensionList")~("value",("compound-dimensions", JArray(List()))))
-			                           ))
-			      val dimResult = invokeRest("${p_rest_uri}" + da_uri.replaceAll(" ", "%20"), 
-			                                 token,
-			                                 Map(
-			                                     "filters" -> compact(dimFilters), 
-			                                     "dimInclExcl" -> "{}"
-			                                 ))          
-			      val dimResultJson : org.json4s.JObject = 
-			        if (!dimResult.isEmpty) {
-			          parse(dimResult).asInstanceOf[org.json4s.JObject].transformField {
-			            case ("_eventFilters", _) => ("_eventFilters", "")
-			          }.asInstanceOf[org.json4s.JObject]
-			        } else {
-			        	logger.warn("+=+= Cannot get dimResult: dimFilters["+dimFilters+"], da_uri["+da_uri+"]")
-			        	JObject.apply()
-			        }
-			      dimResultIsOk = (dimResultJson \ "status").toOption.nonEmpty && (dimResultJson \ "status").extract[String].toLowerCase  == "ok"
-			      if (dimResultIsOk) {
-			        incident_da = ("incident_da" ->  (("pfilters" -> org.apache.commons.codec.binary.Base64.encodeBase64String(compact(dimFilters).getBytes())) ~ (dimResultJson \ "value").asInstanceOf[org.json4s.JObject]))      
-			        if (!(x.`contextual_metric_id`.getOrElse("").isEmpty())) {
-			          val cFilters =
-			            JArray(List(
-			              (("name","$.metricID")~("value",x.`contextual_metric_id`)),
-			              (("name","$.cacheConfig")~("value",("key1"->x.id)~("key2"->("DA:"+x.`contextual_metric_id`))~("type"->cacheType)~("force"->"true"))),
-			              (("name","data.timeRange")~("value","absolute:"+start_tm+"/" + end_tm)),
-			              (("name","$.excludeEventFilters")~("value",true)),
-			              (("name","$.dimensionList")~("value",("compound-dimensions", JArray(List()))))
-			            ))
-			          val cntxResult = invokeRest("${p_rest_uri}"+da_uri.replaceAll(" ", "%20"),
-			            token,
-			            Map(
-			              "filters" -> compact(cFilters),
-			              "dimInclExcl" -> "{}"
-			            ))
-			          val cntxRJson = 
-			            if (!cntxResult.isEmpty) {
-			               parse(cntxResult).asInstanceOf[org.json4s.JObject].transformField {
-			                case ("_eventFilters", _) => ("_eventFilters", "")
-			              }.asInstanceOf[org.json4s.JObject]
-			            } else {
-			          	  logger.warn("+=+= Cannot get cntxResult: cFilters["+cFilters+"], da_uri["+da_uri+"]")
-			          	  JObject.apply()
-			            }
-			          
-			          val cntxResultIsOk = (cntxRJson \ "status").toOption.nonEmpty && (cntxRJson \ "status").extract[String].toLowerCase  == "ok"
-			          if (cntxResultIsOk)
-			            cntx_da = ("contextual_metric_da" ->  (("pfilters" -> org.apache.commons.codec.binary.Base64.encodeBase64String(compact(cFilters).getBytes())) ~~ (cntxRJson \ "value").asInstanceOf[org.json4s.JObject]))
-			        }
-			      } else {
-			        logger.warn("+=+=DA REST DA Failed!:"+dimResult)
-			      }
-			    }
-			    logout("${p_rest_uri}/logout", token)
-			    val mapper = new ObjectMapper() with ScalaObjectMapper
-			    mapper.registerModule(DefaultScalaModule)
-			    if (dimResultIsOk) {
-			      compact(incident_da ~ cntx_da ~ ("incident" -> Extraction.decompose(x)) ~ ("status" -> "ok"))
-			    } else {
-			      compact(("incident" -> Extraction.decompose(x)) ~ ("status" -> "fail")) //cntx_da must be null
-			    }
-			}).cache()]]></Script>
+                      <Script><![CDATA[		val retval = source1.vtMap(
+		  x => {
+		    if(System.getProperty("disableCertificateValidatio_done")==null) {
+		      disableCertificateValidation
+		      System.setProperty("disableCertificateValidatio_done","true")
+		    }
+		    val token = getToken("${p_rest_uri}/login")
+		    val svcManifest = getSvcManifest("${p_rest_uri}"+"${p_svc_uri}".replaceAll(" ", "%20"),token)
+		    var incident_da : org.json4s.JObject = JObject.apply()
+		    var cntx_da : org.json4s.JObject = JObject.apply()
+		    var dimResultIsOk : Boolean = false
+		    implicit val formats = DefaultFormats   
+		    if (svcManifest != null) {
+		      import scala.util.parsing.json._
+		      val svcJson:Option[Any] = JSON.parseFull(svcManifest);
+		      val svcMap:Map[String,Map[String,String]] = svcJson.get.asInstanceOf[Map[String, Map[String,String]]]
+		      val da_uri = svcMap.get("EnhancedDimensionAnalysis").get("url")
+		      
+		      val interval = Integer.parseInt(x.window.get.split("/")(1))*60
+		      val start_tm = x.start_tm.get
+		      val end_tm =  (if (x.end_tm.get != 0) x.end_tm.get else x.event_tm.get) + interval
+		      val cacheType = if (x.state =="Close") "persistent" else "transient"
+		      val dimFilters = JArray(List(
+		                                   (("name","$.metricID")~("value",x.metric_id)),
+		                                   (("name","$.cacheConfig")~("value",("key1"->x.id)~("key2"->"DA:#")~("type"->cacheType)~("force"->"true"))),
+		                                   (("name","data.timeRange")~("value","absolute:"+start_tm+"/"+ end_tm)),
+		                                   (("name","$.rankLimit")~("value",0)),
+		                                   (("name","$.excludeEventFilters")~("value",true)),
+		                                   (("name","$.dimensionList")~("value",("compound-dimensions", JArray(List()))))
+		                           ))
+		      val dimResult = invokeRest("${p_rest_uri}" + da_uri.replaceAll(" ", "%20"), 
+		                                 token,
+		                                 Map(
+		                                     "filters" -> compact(dimFilters), 
+		                                     "dimInclExcl" -> "{}"
+		                                 ))          
+		      val dimResultJson : org.json4s.JObject = 
+		        if (!dimResult.isEmpty) {
+		          parse(dimResult).asInstanceOf[org.json4s.JObject].transformField {
+		            case ("_eventFilters", _) => ("_eventFilters", "")
+		          }.asInstanceOf[org.json4s.JObject]
+		        } else {
+		        	logger.warn("+=+= Cannot get dimResult: dimFilters["+dimFilters+"], da_uri["+da_uri+"]")
+		        	JObject.apply()
+		        }
+		      dimResultIsOk = (dimResultJson \ "status").toOption.nonEmpty && (dimResultJson \ "status").extract[String].toLowerCase  == "ok"
+		      if (dimResultIsOk) {
+		        incident_da = ("incident_da" ->  (("pfilters" -> org.apache.commons.codec.binary.Base64.encodeBase64String(compact(dimFilters).getBytes())) ~ (dimResultJson \ "value").asInstanceOf[org.json4s.JObject]))      
+		        if (!(x.`contextual_metric_id`.getOrElse("").isEmpty())) {
+		          val cFilters =
+		            JArray(List(
+		              (("name","$.metricID")~("value",x.`contextual_metric_id`)),
+		              (("name","$.cacheConfig")~("value",("key1"->x.id)~("key2"->("DA:"+x.`contextual_metric_id`))~("type"->cacheType)~("force"->"true"))),
+		              (("name","data.timeRange")~("value","absolute:"+start_tm+"/" + end_tm)),
+		              (("name","$.excludeEventFilters")~("value",true)),
+		              (("name","$.dimensionList")~("value",("compound-dimensions", JArray(List()))))
+		            ))
+		          val cntxResult = invokeRest("${p_rest_uri}"+da_uri.replaceAll(" ", "%20"),
+		            token,
+		            Map(
+		              "filters" -> compact(cFilters),
+		              "dimInclExcl" -> "{}"
+		            ))
+		          val cntxRJson = 
+		            if (!cntxResult.isEmpty) {
+		               parse(cntxResult).asInstanceOf[org.json4s.JObject].transformField {
+		                case ("_eventFilters", _) => ("_eventFilters", "")
+		              }.asInstanceOf[org.json4s.JObject]
+		            } else {
+		          	  logger.warn("+=+= Cannot get cntxResult: cFilters["+cFilters+"], da_uri["+da_uri+"]")
+		          	  JObject.apply()
+		            }
+		          
+		          val cntxResultIsOk = (cntxRJson \ "status").toOption.nonEmpty && (cntxRJson \ "status").extract[String].toLowerCase  == "ok"
+		          if (cntxResultIsOk)
+		            cntx_da = ("contextual_metric_da" ->  (("pfilters" -> org.apache.commons.codec.binary.Base64.encodeBase64String(compact(cFilters).getBytes())) ~~ (cntxRJson \ "value").asInstanceOf[org.json4s.JObject]))
+		        }
+		      } else {
+		        logger.warn("+=+=DA REST DA Failed!:"+dimResult)
+		      }
+		    }
+		    logout("${p_rest_uri}/logout", token)
+		    val mapper = new ObjectMapper() with ScalaObjectMapper
+		    mapper.registerModule(DefaultScalaModule)
+		    if (dimResultIsOk) {
+		      compact(incident_da ~ cntx_da ~ ("incident" -> Extraction.decompose(x)) ~ ("status" -> "ok"))
+		    } else {
+		      compact(("incident" -> Extraction.decompose(x)) ~ ("status" -> "fail")) //cntx_da must be null
+		    }
+		}).cache()]]></Script>
                       <shellScript><![CDATA[{"global":"","custom_func":"    val retval = source1.vtMap(    x =>\n        \n        \"\"\r\n    )\r"}]]></shellScript>
                     </Model>
                 </Node>
@@ -2440,7 +2440,7 @@ def invokeRest(url : String, token : String, paramers : Map[String, String]) : S
       </Libraries>
       <Resources>
       </Resources>
-      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_rest_uri","label":"REST URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"https://via1/vitria-oi/rest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_svc_uri","label":"Manifest URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_username","label":"Service Call User Name","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"do_admin","enumSource":"","runtimeControl":false},{"editorType":"password","*":{"label":"label","desc":"desc"},"group":"common","name":"p_password","label":"Service Call Password","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","constraints":"password","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"retry_times","label":"Number of Retry to Call REST","type":"long","hidden":"false","disabled":false,"resolveProperty":false,"value":"3","enumSource":"","runtimeControl":false}]</Properties>
+      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_rest_uri","label":"REST URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"https://via1/vitria-oi/rest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_svc_uri","label":"Manifest URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_username","label":"Service Call User Name","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"do_admin","enumSource":"","runtimeControl":false},{"editorType":"password","*":{"label":"label","desc":"desc"},"group":"common","name":"p_password","label":"Service Call Password","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","constraints":"password","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"retry_times","label":"Number of Retry to Call REST","type":"long","hidden":"false","disabled":false,"resolveProperty":false,"value":3,"enumSource":"","runtimeControl":false}]</Properties>
       <Types>[{"name":"DA_out","namespace":"viaops","schema":[{"name":"result","type":"string","_isOptional":false,"_isArray":false}]}]</Types>
               </Flow>
 </__subflow__>

@@ -17,12 +17,12 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1590368948608",
+  "lastDate": "1591258610040",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"Simple Deviation\" algorithm",
     "_RESOURCE_Type": "sparkm",
-    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@582,adf.subflow:///viaops.incident/Simple Deviation Evaluation@511,adf.subflow:///viaops.incident/Enrich Contextual Metric@607",
+    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@596,adf.subflow:///viaops.incident/Simple Deviation Evaluation@539,adf.subflow:///viaops.incident/Enrich Contextual Metric@607",
     "modelStatus": "valid",
     "name": "RT VIAOps Simple Deviation Incident",
     "subflowReg": "",

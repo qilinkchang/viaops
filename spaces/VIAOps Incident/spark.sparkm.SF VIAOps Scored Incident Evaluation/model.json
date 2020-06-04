@@ -17,7 +17,7 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591082883903",
+  "lastDate": "1591258610058",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for scored incident calculation.",
@@ -25,7 +25,7 @@
     "__references__": "",
     "modelStatus": "valid",
     "name": "SF VIAOps Scored Incident Evaluation",
-    "subflowReg": "{\"Scored Evaluation\":{\"revision\":\"418\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "subflowReg": "{\"Scored Evaluation\":{\"revision\":\"511\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
     "typeReg": ""
   }
 }
