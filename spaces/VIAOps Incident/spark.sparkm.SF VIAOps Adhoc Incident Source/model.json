@@ -1,0 +1,32 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1591258608211",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Provide subflow for reading Anomaly from Anomaly Table",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "",
+    "modelStatus": "valid",
+    "name": "SF VIAOps Adhoc Incident Source",
+    "subflowReg": "{\"Adhoc Incident Source\":{\"revision\":\"60\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"}}",
+    "typeDeps": "{\"dependencies\":[],\"contributes\":[\"viaops.incident_score_anomaly\"]}",
+    "typeReg": ""
+  }
+}
