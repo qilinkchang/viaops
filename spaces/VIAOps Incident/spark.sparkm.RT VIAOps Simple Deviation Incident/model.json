@@ -17,7 +17,7 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591258610040",
+  "lastDate": "1591320025228",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"Simple Deviation\" algorithm",

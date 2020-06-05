@@ -17,13 +17,13 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591258608218",
+  "lastDate": "1591320025242",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Adhoc processing for detecting and Identifying Incident in Anomaly table using \"score\" algorithm",
     "_RESOURCE_Type": "sparkm",
-    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@596,adf.subflow:///viaops.incident/Enrich Contextual Metric@607,adf.subflow:///viaops.incident/Scored Evaluation@511,adf.subflow:///viaops.incident.adhoc/Adhoc Incident Source@60",
-    "modelStatus": "invalid",
+    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@596,adf.subflow:///viaops.incident/Enrich Contextual Metric@607,adf.subflow:///viaops.incident/Scored Evaluation@511,adf.subflow:///viaops.incident.adhoc/Adhoc Incident Source@64",
+    "modelStatus": "valid",
     "name": "Adhoc VIAOps Scored Incident",
     "subflowReg": "",
     "typeDeps": "{\"dependencies\":[\"viaops.incident_store\",\"viaops.incident_in\",\"viaops.incident_for_grouping\",\"viaops.incident_out\",\"viaops.incident_summary\",\"viaops.incident_score_anomaly\",\"viaops.incident_anomaly_source\",\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\"],\"contributes\":[\"viaops.incident_summary\",\"viaops.DA_out\",\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\"]}",

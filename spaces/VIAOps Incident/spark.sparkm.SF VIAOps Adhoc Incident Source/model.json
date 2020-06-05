@@ -17,7 +17,7 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591258608211",
+  "lastDate": "1591320025219",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for reading Anomaly from Anomaly Table",
@@ -25,7 +25,7 @@
     "__references__": "",
     "modelStatus": "valid",
     "name": "SF VIAOps Adhoc Incident Source",
-    "subflowReg": "{\"Adhoc Incident Source\":{\"revision\":\"60\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"}}",
+    "subflowReg": "{\"Adhoc Incident Source\":{\"revision\":\"64\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"}}",
     "typeDeps": "{\"dependencies\":[],\"contributes\":[\"viaops.incident_score_anomaly\"]}",
     "typeReg": ""
   }
