@@ -17,12 +17,12 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591258610064",
+  "lastDate": "1592445131720",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"score\" algorithm",
     "_RESOURCE_Type": "sparkm",
-    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@596,adf.subflow:///viaops.incident/Enrich Contextual Metric@607,adf.subflow:///viaops.incident/Scored Evaluation@511",
+    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@861,adf.subflow:///viaops.incident/Enrich Contextual Metric@677,adf.subflow:///viaops.incident/Scored Evaluation@576",
     "modelStatus": "valid",
     "name": "RT VIAOps Scored Incident",
     "subflowReg": "",

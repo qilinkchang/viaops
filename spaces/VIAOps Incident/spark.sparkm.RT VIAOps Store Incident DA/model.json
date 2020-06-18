@@ -17,13 +17,13 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591152340270",
+  "lastDate": "1592445131725",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Store Incident DA Result to Hive Table",
     "_RESOURCE_Type": "sparkm",
-    "__references__": "adf.subflow:///viaops.incident/Parse Incident@35",
-    "modelStatus": "valid",
+    "__references__": "adf.subflow:///viaops.incident/Parse Incident@198",
+    "modelStatus": "invalid",
     "name": "RT VIAOps Store Incident DA",
     "subflowReg": "",
     "typeReg": ""

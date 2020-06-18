@@ -17,7 +17,7 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591258610045",
+  "lastDate": "1592355657626",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for simple deviation incident calculation.",
@@ -25,7 +25,7 @@
     "__references__": "",
     "modelStatus": "valid",
     "name": "SF VIAOps Simple Deviation Incident Evaluation",
-    "subflowReg": "{\"Simple Deviation Evaluation\":{\"revision\":\"539\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "subflowReg": "{\"Simple Deviation Evaluation\":{\"revision\":\"592\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
     "typeReg": ""
   }
 }

@@ -17,7 +17,7 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1589783163402",
+  "lastDate": "1592445131716",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for enrich contextual metric.",
@@ -25,7 +25,7 @@
     "__references__": "",
     "modelStatus": "valid",
     "name": "SF VIAOps Contextual Metric Enrichment",
-    "subflowReg": "{\"Enrich Contextual Metric\":{\"revision\":\"607\",\"registered\":true,\"subflowPath\":\"viaops.incident\"},\"Join Contextual Metric \":{\"revision\":\"195\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "subflowReg": "{\"Enrich Contextual Metric\":{\"revision\":\"677\",\"registered\":true,\"subflowPath\":\"viaops.incident\"},\"Join Contextual Metric \":{\"revision\":\"195\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
     "typeDeps": "{\"dependencies\":[],\"contributes\":[\"viaops.incident_score_anomaly\"]}",
     "typeReg": "{\"Main\":[{\"types\":[\"incident_score_anomaly\"],\"ns\":\"viaops\",\"f\":\"\"}],\"Enrich Contextual Metric\":[{\"types\":[\"ContextualAnomaly\"],\"ns\":\"viaops.incident.EnrichContextualMetric\",\"f\":\"d17e8ca1-e0c6-4358-84b5-5f7fe5691d01\",\"l\":\"Get Contextual Metric\",\"p\":\"out\"},{\"types\":[\"AnomalyWithCMID\"],\"ns\":\"viaops.incident.EnrichContextualMetric\",\"f\":\"0a26d516-183b-4699-85cc-ca60413b6e6f\",\"l\":\"Joint Contextual Metric\",\"p\":\"out\"}]}"
   }

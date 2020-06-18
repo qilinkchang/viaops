@@ -17,12 +17,12 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591258610075",
+  "lastDate": "1592355657632",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"simple_threshold\" algorithm",
     "_RESOURCE_Type": "sparkm",
-    "__references__": "adf.subflow:///viaops.incident/Incident Conf@509,adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@596,adf.subflow:///viaops.incident/Simple Threshold Evaluation@444",
+    "__references__": "adf.subflow:///viaops.incident/Incident Conf@509,adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@861,adf.subflow:///viaops.incident/Simple Threshold Evaluation@518",
     "modelStatus": "valid",
     "name": "RT VIAOps Simple Threshold Incident",
     "subflowReg": "",

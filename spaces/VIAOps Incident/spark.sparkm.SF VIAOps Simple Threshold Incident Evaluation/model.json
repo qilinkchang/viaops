@@ -17,7 +17,7 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1590554936342",
+  "lastDate": "1592355657638",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for simple threshold incident calculation.",
@@ -25,7 +25,7 @@
     "__references__": "",
     "modelStatus": "valid",
     "name": "SF VIAOps Simple Threshold Incident Evaluation",
-    "subflowReg": "{\"Simple Threshold Evaluation\":{\"revision\":\"444\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "subflowReg": "{\"Simple Threshold Evaluation\":{\"revision\":\"518\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
     "typeReg": ""
   }
 }

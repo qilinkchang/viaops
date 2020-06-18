@@ -1,0 +1,32 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1592445130521",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Provide subflow for reading Anomaly from Anomaly Table",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@861",
+    "modelStatus": "valid",
+    "name": "SF VIAOps Adhoc Incident",
+    "subflowReg": "{\"Adhoc Incident Source\":{\"revision\":\"156\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"Incident Output For IG\":{\"revision\":\"167\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"Incident Output\":{\"revision\":\"162\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"AS Input And Result\":{\"revision\":\"385\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"}}",
+    "typeDeps": "{\"dependencies\":[],\"contributes\":[\"viaops.incident_score_anomaly\"]}",
+    "typeReg": ""
+  }
+}

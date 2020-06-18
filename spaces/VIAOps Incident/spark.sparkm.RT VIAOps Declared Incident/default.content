@@ -7,7 +7,7 @@
       <Property name="hive.db.schema" value=""/>
     </Properties>
   </HiveConfig>
-  <ModelInfo validated="false">
+  <ModelInfo validated="true">
     <Pipes>
       <Pipe index="1000" uuid="" name="(main)">
       </Pipe>
@@ -203,7 +203,7 @@
             <Model type="hiveTable" tableName="${p_incident_table}" partitionType="eventField" partitionSize="" partitionColumn="date_key" partitionIndex="26" timeColumn="" overwrite="false" partitionNum="1" dataSpeed="" dataVolume="">
             </Model>
         </Node>
-        <Node index="1003" uuid="3bddb4b7-ab32-48b9-8513-ca68ae44cb53" type="StreamSource" label="Event Stream" x="32" y="29" width="130" height="75">
+        <Node index="1003" uuid="3bddb4b7-ab32-48b9-8513-ca68ae44cb53" type="StreamSource" label="Event Stream" x="29" y="28" width="130" height="75">
             <Output name="out" uid="0" outputType="DStream" dataType="String">
               <Field name="data" label="data" type="string" isArray="false" isOptional="false"/>
                 <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>

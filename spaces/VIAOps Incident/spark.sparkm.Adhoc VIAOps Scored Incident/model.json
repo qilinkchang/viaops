@@ -17,16 +17,16 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591320025242",
+  "lastDate": "1592445131711",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Adhoc processing for detecting and Identifying Incident in Anomaly table using \"score\" algorithm",
     "_RESOURCE_Type": "sparkm",
-    "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@596,adf.subflow:///viaops.incident/Enrich Contextual Metric@607,adf.subflow:///viaops.incident/Scored Evaluation@511,adf.subflow:///viaops.incident.adhoc/Adhoc Incident Source@64",
+    "__references__": "adf.subflow:///viaops.incident/Scored Evaluation@576,adf.subflow:///viaops.incident.adhoc/Adhoc Incident Source@156,adf.subflow:///viaops.incident.adhoc/Incident Output For IG@167,adf.subflow:///viaops.incident/Enrich Contextual Metric@677,adf.subflow:///viaops.incident.adhoc/Incident Output@162,adf.subflow:///viaops.incident.adhoc/AS Input And Result@385",
     "modelStatus": "valid",
     "name": "Adhoc VIAOps Scored Incident",
     "subflowReg": "",
-    "typeDeps": "{\"dependencies\":[\"viaops.incident_store\",\"viaops.incident_in\",\"viaops.incident_for_grouping\",\"viaops.incident_out\",\"viaops.incident_summary\",\"viaops.incident_score_anomaly\",\"viaops.incident_anomaly_source\",\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\"],\"contributes\":[\"viaops.incident_summary\",\"viaops.DA_out\",\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\"]}",
+    "typeDeps": "{\"dependencies\":[\"viaops.incident_in\",\"viaops.incident_out\",\"viaops.incident_score_anomaly\",\"viaops.incident_anomaly_source\",\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\",\"viaops.incident_store\",\"viaops.incident_for_grouping\",\"viaops.incident_summary\"],\"contributes\":[\"viaops.incident.EnrichContextualMetric.ContextualAnomaly\",\"viaops.incident.EnrichContextualMetric.AnomalyWithCMID\",\"viaops.incident_summary\",\"viaops.DA_out\"]}",
     "typeReg": "",
     "vtui:flags": "31"
   }

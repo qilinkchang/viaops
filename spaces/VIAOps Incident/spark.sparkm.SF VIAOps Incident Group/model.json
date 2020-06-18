@@ -1,0 +1,31 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1592445130522",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Subflow of incident (RT and Adhoc) grouping",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Parse Incident@198",
+    "modelStatus": "valid",
+    "name": "SF VIAOps Incident Group",
+    "subflowReg": "{\"Group Incident\":{\"revision\":\"341\",\"registered\":true,\"subflowPath\":\"viaops.incidentgroup\"},\"Adhoc Source\":{\"revision\":\"461\",\"registered\":true,\"subflowPath\":\"viaops.incidentgroup\"}}",
+    "typeReg": "{\"Group Incident\":[]}"
+  }
+}

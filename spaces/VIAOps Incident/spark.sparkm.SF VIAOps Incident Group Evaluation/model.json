@@ -1,0 +1,31 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1591580495762",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Subflow of incident grouping",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incident/Parse Incident@183",
+    "modelStatus": "valid",
+    "name": "SF VIAOps Incident Group Evaluation",
+    "subflowReg": "{\"Group Incident\":{\"revision\":\"294\",\"registered\":true,\"subflowPath\":\"viaops.incident\"}}",
+    "typeReg": "{\"Group Incident\":[]}"
+  }
+}

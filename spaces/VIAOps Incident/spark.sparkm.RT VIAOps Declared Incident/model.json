@@ -17,13 +17,13 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1591258610069",
+  "lastDate": "1592206800558",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"declared\" algorithm",
     "_RESOURCE_Type": "sparkm",
     "__references__": "adf.subflow:///viaops.incident/Incident Summary@357",
-    "modelStatus": "invalid",
+    "modelStatus": "valid",
     "name": "RT VIAOps Declared Incident",
     "subflowReg": "",
     "typeDeps": "{\"dependencies\":[\"viaops.incident_out\",\"viaops.incident_store\",\"viaops.incident_for_grouping\",\"viaops.incident_summary\"],\"contributes\":[\"viaops.incident_summary\"]}",

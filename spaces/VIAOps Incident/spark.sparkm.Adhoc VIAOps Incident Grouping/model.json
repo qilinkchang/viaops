@@ -1,0 +1,33 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    }
+  ],
+  "lastDate": "1592445130519",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Adhoc Grouping Incident(s) for Notification",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "adf.subflow:///viaops.incidentgroup/Group Incident@341,adf.subflow:///viaops.incidentgroup/Adhoc Source@461",
+    "modelStatus": "valid",
+    "name": "Adhoc VIAOps Incident Grouping",
+    "subflowReg": "",
+    "typeDeps": "{\"dependencies\":[\"viaops.incident_store\"],\"contributes\":[]}",
+    "typeReg": "",
+    "vtui:flags": "31"
+  }
+}
