@@ -1,4 +1,4 @@
-<DataPipeModel description="Store Incident DA Result to Hive Table" name="RT VIAOps Store Incident DA" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="auto" batchDuration="P1M" runAsService="false" checkpoint="" batchSampling="true" sparkMasterHost="">
+<DataPipeModel description="Store Incident DA Result to Hive Table" name="RT VIAOps Store Incident DA" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="yes" batchDuration="P1M" runAsService="false" checkpoint="" batchSampling="true" sparkMasterHost="">
   <HiveConfig>
     <Properties>
       <Property name="hive.warehouse.hdfs.source" value=""/>
@@ -7,13 +7,13 @@
       <Property name="hive.db.schema" value=""/>
     </Properties>
   </HiveConfig>
-  <ModelInfo validated="false">
+  <ModelInfo validated="true">
     <Pipes>
       <Pipe index="1000" uuid="" name="(main)">
       </Pipe>
     </Pipes>
     <Flows>
-      <Flow index="1000" uuid="Main" isNested="false" revision="233" name="Main" showFooter="true">
+      <Flow index="1000" uuid="Main" isNested="false" revision="235" name="Main" showFooter="true">
         <Node index="1001" uuid="ba72bec9-247a-47ac-8ed5-3360b2877a26" type="StreamSource" label="Enriched Incindent Stream" x="40" y="52" width="130" height="75">
             <Output name="out" uid="0" outputType="DStream" dataType="String">
               <Field name="data" label="data" type="string" isArray="false" isOptional="false"/>
@@ -57,11 +57,11 @@
                 <Field name="apex_pctDev" label="apex_pctDev" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_eScore" label="apex_eScore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_pBaseline" label="apex_pBaseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
-                <Field name="apex_baseline" label="apex_baseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="apex_baseline" label="apex_baseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_pTotal" label="apex_pTotal" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_sScore" label="apex_sScore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_nsScore" label="apex_nsScore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
-                <Field name="apex_count" label="apex_count" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="apex_count" label="apex_count" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_relDiff" label="apex_relDiff" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_diffPct" label="apex_diffPct" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_diff" label="apex_diff" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
@@ -99,11 +99,11 @@
               <Field name="apex_pctDev" label="apex_pctDev" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_eScore" label="apex_eScore" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_pBaseline" label="apex_pBaseline" type="double" clazz="" isArray="false" isOptional="true"/>
-              <Field name="apex_baseline" label="apex_baseline" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="apex_baseline" label="apex_baseline" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_pTotal" label="apex_pTotal" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_sScore" label="apex_sScore" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_nsScore" label="apex_nsScore" type="double" clazz="" isArray="false" isOptional="true"/>
-              <Field name="apex_count" label="apex_count" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="apex_count" label="apex_count" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_relDiff" label="apex_relDiff" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_diffPct" label="apex_diffPct" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_diff" label="apex_diff" type="double" clazz="" isArray="false" isOptional="true"/>
@@ -680,11 +680,11 @@
                 <Field name="apex_pctDev" label="apex_pctDev" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_eScore" label="apex_eScore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_pBaseline" label="apex_pBaseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
-                <Field name="apex_baseline" label="apex_baseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="apex_baseline" label="apex_baseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_pTotal" label="apex_pTotal" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_sScore" label="apex_sScore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_nsScore" label="apex_nsScore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
-                <Field name="apex_count" label="apex_count" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="apex_count" label="apex_count" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_relDiff" label="apex_relDiff" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_diffPct" label="apex_diffPct" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="apex_diff" label="apex_diff" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
@@ -722,11 +722,11 @@
               <Field name="apex_pctDev" label="apex_pctDev" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_eScore" label="apex_eScore" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_pBaseline" label="apex_pBaseline" type="double" clazz="" isArray="false" isOptional="true"/>
-              <Field name="apex_baseline" label="apex_baseline" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="apex_baseline" label="apex_baseline" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_pTotal" label="apex_pTotal" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_sScore" label="apex_sScore" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_nsScore" label="apex_nsScore" type="double" clazz="" isArray="false" isOptional="true"/>
-              <Field name="apex_count" label="apex_count" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="apex_count" label="apex_count" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_relDiff" label="apex_relDiff" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_diffPct" label="apex_diffPct" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_diff" label="apex_diff" type="double" clazz="" isArray="false" isOptional="true"/>
@@ -738,8 +738,8 @@
               </Filters>
             </Model>
         </Node>
-        <Node index="1002" uuid="01451989-a484-4017-84e6-52a2b5c9cfcb" type="Compute" label="Normalize Result" x="400" y="52" width="130" height="75">
-            <Source name="source" uid="0" outputType="DStream" dataType="class:Enriched_Incident">
+        <Node index="1002" uuid="01451989-a484-4017-84e6-52a2b5c9cfcb" type="Adhoc" label="Normalize Result" x="400" y="52" width="130" height="75">
+            <Source name="source1" uid="0" outputType="DStream" dataType="class:Enriched_Incident">
               <DataSource category="#OUTPUT" id="undefined" name="Out" nodeId="1838790c-9689-408e-8340-845be7a085a4">
                 <Field name="incident_da" label="incident_da" type="Incident_da" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
                 <Field name="contextual_metric_da" label="contextual_metric_da" type="Incident_da" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
@@ -853,7 +853,7 @@
                 <Field name="mode" label="mode" type="string" isDimension="false" isMeasure="false" clazz="Incident" isArray="false" isOptional="false"/>
               </DataSource>
             </Source>
-            <Output name="out" uid="0" outputType="DStream" dataType="class:DARow">
+            <Output name="out" uid="0" outputType="DStream" dataType="class:DARow" referenceType="DARow">
               <Field name="incident_start_tm" label="incident_start_tm" type="long" clazz="" isArray="false" isOptional="false"/>
               <Field name="incident_event_tm" label="incident_event_tm" type="long" clazz="" isArray="false" isOptional="false"/>
               <Field name="incident_id" label="incident_id" type="string" clazz="" isArray="false" isOptional="false"/>
@@ -885,68 +885,74 @@
               <Field name="apex_pctDev" label="apex_pctDev" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_eScore" label="apex_eScore" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_pBaseline" label="apex_pBaseline" type="double" clazz="" isArray="false" isOptional="true"/>
-              <Field name="apex_baseline" label="apex_baseline" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="apex_baseline" label="apex_baseline" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_pTotal" label="apex_pTotal" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_sScore" label="apex_sScore" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_nsScore" label="apex_nsScore" type="double" clazz="" isArray="false" isOptional="true"/>
-              <Field name="apex_count" label="apex_count" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="apex_count" label="apex_count" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_relDiff" label="apex_relDiff" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_diffPct" label="apex_diffPct" type="double" clazz="" isArray="false" isOptional="true"/>
               <Field name="apex_diff" label="apex_diff" type="double" clazz="" isArray="false" isOptional="true"/>
                 <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
             </Output>
-            <Model _caseClass="DARow" isClassRef="true">
-              <Iterators>
-                <Iterator alias="items" value="incident_da.items"/>
-              </Iterators>
-              <Computes>
-                <Compute op="sleText" field="*" arg="" value="incident.start_tm" outputType="long" alias="incident_start_tm" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident.event_tm" outputType="long" alias="incident_event_tm" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident.id" outputType="string" alias="incident_id" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident.metric_id" outputType="string" alias="metric_id" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._value" outputType="string" alias="da_value" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._name" outputType="string" alias="da_name" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._label" outputType="string" alias="da_label" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._pctDev" outputType="double" alias="da_pctDev" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._diffPct" outputType="double" alias="da_diffPct" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._pBaseline" outputType="double" alias="da_pBaseline" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._diff" outputType="double" alias="da_diff" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._baseline" outputType="double" alias="da_baseline" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._pTotal" outputType="double" alias="da_pTotal" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._count" outputType="double" alias="da_count" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._relDiff" outputType="double" alias="da_relDiff" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._relMag" outputType="double" alias="da_relMag" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._eScore" outputType="double" alias="da_eScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._sScore" outputType="double" alias="da_sScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._nsScore" outputType="double" alias="da_nsScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._ksScore" outputType="string" alias="da_ksScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._excludeValue" outputType="string" alias="da_excludeValue" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._excludeScore" outputType="string" alias="da_excludeScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._excludeNotes" outputType="string" alias="da_excludeNotes" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._scores" outputType="string" alias="da_scores" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="items._values" outputType="string" alias="da_values" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident.date_key" outputType="long" alias="date_key" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="unix_timestamp_millisec(microbatch_time())/1000" outputType="long" alias="mb_tm" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._relMag" outputType="double" alias="apex_relMag" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._pctDev" outputType="double" alias="apex_pctDev" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._eScore" outputType="double" alias="apex_eScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._pBaseline" outputType="double" alias="apex_pBaseline" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._baseline" outputType="double" alias="apex_baseline" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._pTotal" outputType="double" alias="apex_pTotal" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._sScore" outputType="double" alias="apex_sScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._nsScore" outputType="double" alias="apex_nsScore" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._count" outputType="double" alias="apex_count" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._relDiff" outputType="double" alias="apex_relDiff" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._diffPct" outputType="double" alias="apex_diffPct" wordWarp="true"/>
-                <Compute op="sleText" field="*" arg="" value="incident_da.apex._diff" outputType="double" alias="apex_diff" wordWarp="true"/>
-              </Computes>
-              <CheckboxStatus isChecked="false"/>
+            <Model isDynamicSchema="false">
+              <Script><![CDATA[import com.vitria.spark.api.scala.Operator2Utils._
+import com.vitria.spark.api.scala.DatetimeUtils._
+val retval = source1.flatMap(        x =>
+      x.incident_da.flatMap(_.items).getOrElse(Seq[Items]()).flatten(items=>
+        Seq(
+          DARow(  
+            x.incident.start_tm,
+            x.incident.event_tm,
+            x.incident.id,
+            x.incident.metric_id,
+            items._value,
+            items._name,
+            items._label,
+            items._pctDev,
+            items._diffPct,
+            items._pBaseline,
+            items._diff,
+            items._baseline,
+            items._pTotal,
+            items._count,
+            items._relDiff,
+            items._relMag,
+            items._eScore,
+            items._sScore,
+            items._nsScore,
+            items._ksScore,
+            items._excludeValue,
+            items._excludeScore,
+            items._excludeNotes,
+            items._scores,
+            items._values,
+            x.incident.date_key,
+            ((unix_timestamp_millisec(microbatch_time()) DIV 1000D)).toLong,
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._relMag))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._pctDev))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._eScore))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._pBaseline))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.map(_._baseline))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._pTotal))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._sScore))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._nsScore))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.map(_._count))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._relDiff))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._diffPct))),
+            x.incident_da.flatMap(_.apex.flatMap(_.headOption.flatMap(_._diff)))
+          )
+        )
+      )
+)
+]]></Script>
+              <shellScript><![CDATA[{"global":"","custom_func":"    import com.vitria.spark.api.scala.Operator2Utils._\n    import com.vitria.spark.api.scala.DatetimeUtils._\n    val retval = source1.flatMap(    x =>\n      x.incident_da.flatMap(_.items).getOrElse(Seq[Items]()).flatten(items=>\n        Seq(\n          DARow(  \n            x.incident.start_tm,\n            x.incident.event_tm,\n            x.incident.id,\n            x.incident.metric_id,\n            items._value,\n            items._name,\n            items._label,\n            items._pctDev,\n            items._diffPct,\n            items._pBaseline,\n            items._diff,\n            items._baseline,\n            items._pTotal,\n            items._count,\n            items._relDiff,\n            items._relMag,\n            items._eScore,\n            items._sScore,\n            items._nsScore,\n            items._ksScore,\n            items._excludeValue,\n            items._excludeScore,\n            items._excludeNotes,\n            items._scores,\n            items._values,\n            x.incident.date_key,\n            ((unix_timestamp_millisec(microbatch_time()) DIV 1000D)).toLong,\n            x.incident_da.flatMap(_.apex.flatMap(_._relMag)),\n            x.incident_da.flatMap(_.apex.flatMap(_._pctDev)),\n            x.incident_da.flatMap(_.apex.flatMap(_._eScore)),\n            x.incident_da.flatMap(_.apex.flatMap(_._pBaseline)),\n            x.incident_da.map(_.apex.map(_._baseline)),\n            x.incident_da.flatMap(_.apex.flatMap(_._pTotal)),\n            x.incident_da.flatMap(_.apex.flatMap(_._sScore)),\n            x.incident_da.flatMap(_.apex.flatMap(_._nsScore)),\n            x.incident_da.map(_.apex.map(_._count)),\n            x.incident_da.flatMap(_.apex.flatMap(_._relDiff)),\n            x.incident_da.flatMap(_.apex.flatMap(_._diffPct)),\n            x.incident_da.flatMap(_.apex.flatMap(_._diff))\n          )\n        )\n      )\r\n    )\r"}]]></shellScript>
             </Model>
         </Node>
         <Link srcId="dc1cffd8-aa01-4de9-82d7-b7a9029f7a14" srcPort="out:0" tgtId="041f5f71-b0ce-440d-831d-8fb1b702c599" tgtPort="in:0"/>
         <Link srcId="ba72bec9-247a-47ac-8ed5-3360b2877a26" srcPort="dout:0" tgtId="1838790c-9689-408e-8340-845be7a085a4" tgtPort="din:0"/>
-        <Link srcId="1838790c-9689-408e-8340-845be7a085a4" srcPort="dout:0" tgtId="01451989-a484-4017-84e6-52a2b5c9cfcb" tgtPort="in:0"/>
-        <Link srcId="01451989-a484-4017-84e6-52a2b5c9cfcb" srcPort="out:0" tgtId="dc1cffd8-aa01-4de9-82d7-b7a9029f7a14" tgtPort="in:0"/>
+        <Link srcId="1838790c-9689-408e-8340-845be7a085a4" srcPort="dout:0" tgtId="01451989-a484-4017-84e6-52a2b5c9cfcb" tgtPort="din:0"/>
+        <Link srcId="01451989-a484-4017-84e6-52a2b5c9cfcb" srcPort="dout:0" tgtId="dc1cffd8-aa01-4de9-82d7-b7a9029f7a14" tgtPort="in:0"/>
       <Codes>
       </Codes>
       <Libraries>
@@ -954,7 +960,7 @@
       <Resources>
       </Resources>
       <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_enriched_incident","label":"Enriched Incident","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;HDFS_URL&gt;/viaops/incident_plus_da","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_da_table","label":"Incident DA Tale Name","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_da_history","enumSource":"","runtimeControl":false}]</Properties>
-      <Types>[{"name":"DARow","namespace":"","schema":[{"name":"incident_start_tm","label":"incident_start_tm","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"incident_event_tm","label":"incident_event_tm","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"incident_id","label":"incident_id","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"metric_id","label":"metric_id","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_value","label":"da_value","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_name","label":"da_name","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_label","label":"da_label","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_pctDev","label":"da_pctDev","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_diffPct","label":"da_diffPct","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_pBaseline","label":"da_pBaseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_diff","label":"da_diff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_baseline","label":"da_baseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_pTotal","label":"da_pTotal","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_count","label":"da_count","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_relDiff","label":"da_relDiff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_relMag","label":"da_relMag","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_eScore","label":"da_eScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_sScore","label":"da_sScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_nsScore","label":"da_nsScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_ksScore","label":"da_ksScore","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_excludeValue","label":"da_excludeValue","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_excludeScore","label":"da_excludeScore","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_excludeNotes","label":"da_excludeNotes","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_scores","label":"da_scores","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":true,"_isOptional":true},{"name":"da_values","label":"da_values","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":true,"_isOptional":true},{"name":"date_key","label":"date_key","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"mb_tm","label":"mb_tm","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"apex_relMag","label":"apex_relMag","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_pctDev","label":"apex_pctDev","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_eScore","label":"apex_eScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_pBaseline","label":"apex_pBaseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_baseline","label":"apex_baseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"apex_pTotal","label":"apex_pTotal","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_sScore","label":"apex_sScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_nsScore","label":"apex_nsScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_count","label":"apex_count","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"apex_relDiff","label":"apex_relDiff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_diffPct","label":"apex_diffPct","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_diff","label":"apex_diff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true}]}]</Types>
+      <Types>[{"name":"DARow","namespace":"","schema":[{"name":"incident_start_tm","label":"incident_start_tm","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"incident_event_tm","label":"incident_event_tm","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"incident_id","label":"incident_id","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"metric_id","label":"metric_id","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_value","label":"da_value","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_name","label":"da_name","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_label","label":"da_label","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_pctDev","label":"da_pctDev","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_diffPct","label":"da_diffPct","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_pBaseline","label":"da_pBaseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_diff","label":"da_diff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_baseline","label":"da_baseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_pTotal","label":"da_pTotal","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_count","label":"da_count","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"da_relDiff","label":"da_relDiff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_relMag","label":"da_relMag","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_eScore","label":"da_eScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_sScore","label":"da_sScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_nsScore","label":"da_nsScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_ksScore","label":"da_ksScore","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_excludeValue","label":"da_excludeValue","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_excludeScore","label":"da_excludeScore","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_excludeNotes","label":"da_excludeNotes","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"da_scores","label":"da_scores","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":true,"_isOptional":true},{"name":"da_values","label":"da_values","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":true,"_isOptional":true},{"name":"date_key","label":"date_key","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"mb_tm","label":"mb_tm","type":"long","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"apex_relMag","label":"apex_relMag","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_pctDev","label":"apex_pctDev","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_eScore","label":"apex_eScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_pBaseline","label":"apex_pBaseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_baseline","label":"apex_baseline","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_pTotal","label":"apex_pTotal","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_sScore","label":"apex_sScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_nsScore","label":"apex_nsScore","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_count","label":"apex_count","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_relDiff","label":"apex_relDiff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_diffPct","label":"apex_diffPct","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true},{"name":"apex_diff","label":"apex_diff","type":"double","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":true}]}]</Types>
       </Flow>
     </Flows>
   </ModelInfo>
