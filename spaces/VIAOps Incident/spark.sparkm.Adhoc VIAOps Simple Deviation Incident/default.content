@@ -13,7 +13,7 @@
       </Pipe>
     </Pipes>
     <Flows>
-      <Flow index="1000" uuid="Main" isNested="false" revision="4480" name="Main" showFooter="true">
+      <Flow index="1000" uuid="Main" isNested="false" revision="4483" name="Main" showFooter="true">
         <Node index="1009" uuid="a8f6dab4-83d5-4f61-86a5-65b765a139bf" type="StreamTarget" label="Audit Log Incident" x="400" y="152" width="130" height="75">
             <Source name="source" uid="0" outputType="DStream" dataType="class:viaops.incident_in">
               <DataSource category="#OUTPUT" id="undefined" name="audit" nodeId="8f3b5a68-1d21-47c6-8fd8-1e9be7192c4b">
@@ -4633,7 +4633,7 @@ _as_caller=${as_caller}]]></ServiceParam>
 {"subFlow":"remote:///viaops.incident.adhoc/Incident Output","p_incident_table":"viaops_incident_adhoc_history","p_summary_table":"viaops_incident_adhoc_summary","p_rest_uri":"https://via1/vitria-oi/rest","p_svc_uri":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","p_username":"do_admin","p_password":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","p_keyDimensionsOnly":"false"}
 </Properties>
               <__subflow__>
-              <Flow index="1002" uuid="Incident Output" isNested="true" revision="162" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident.adhoc/Incident Output" name="Incident Output" showFooter="true">
+              <Flow index="1002" uuid="Incident Output" isNested="true" revision="163" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident.adhoc/Incident Output" name="Incident Output" showFooter="true">
                 <Node index="1002_1" uuid="ab621554-0fb1-4331-835f-988fe3a2d61e" type="inPort" label="incident" x="90" y="40" width="72.703125" height="40">
                     <Output name="out" uid="0" outputType="DStream" dataType="class:viaops.incident_out" referenceType="viaops.incident_out">
                       <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -5876,7 +5876,7 @@ _as_caller=${as_caller}]]></ServiceParam>
 {"subFlow":"remote:///viaops.incident/Dimension Analysis","p_rest_uri":"https://via1/vitria-oi/rest","p_svc_uri":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","p_username":"do_admin","p_password":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","retry_times":"3","p_keyDimensionsOnly":"false"}
 </Properties>
                       <__subflow__>
-                      <Flow index="1002_8" uuid="Dimension Analysis" isNested="true" revision="861" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
+                      <Flow index="1002_8" uuid="Dimension Analysis" isNested="true" revision="863" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
                         <Node index="1002_8_2" uuid="c66f3e18-0529-47a2-8808-a1360292c0bf" type="inPort" label="In" x="220" y="80" width="70" height="40">
                             <Output name="Out" uid="0" outputType="DStream" dataType="class:viaops.incident_for_grouping" referenceType="viaops.incident_for_grouping">
                               <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -6184,7 +6184,7 @@ def getToken(loginUrl : String) : String = {
     if (responseCode == HttpURLConnection.HTTP_OK) {
     	inputStream = connection.getInputStream()
     } else {
-      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
+      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
     	return null
     }
     //get response
@@ -6193,7 +6193,7 @@ def getToken(loginUrl : String) : String = {
     ret     
   } catch {
     case ex: Exception => {
-    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}]]" + ex.getMessage())
+    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}]]" + ex.getMessage())
     	return null
     }
   }
@@ -6325,7 +6325,7 @@ _as_caller=${as_caller}]]></ServiceParam>
               <__binding__><![CDATA[{"p_summary_table":"p_summary_table","p_rest_uri":"p_rest_uri","p_svc_uri":"p_svc_uri","p_username":"p_username","p_password":"p_password","p_incident_table":"p_incident_table"}]]></__binding__>
             </Model>
         </Node>
-        <Node index="1006" uuid="b7da2449-6967-47d5-8441-88f5f6bfdc77" type="subflow" label="AS Input And Result" x="60" y="132" width="130" height="75">
+        <Node index="1006" uuid="b7da2449-6967-47d5-8441-88f5f6bfdc77" type="subflow" label="AS Input And Result" x="60" y="134" width="130" height="75">
             <Output name="Out" uid="0" outputType="RDD" dataType="String">
               <Field name="data" label="data" type="string" isArray="false" isOptional="false"/>
                 <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
@@ -6335,7 +6335,7 @@ _as_caller=${as_caller}]]></ServiceParam>
 {"subFlow":"remote:///viaops.incident.adhoc/AS Input And Result","p_incident_table":"viaops_incident_adhoc_history","p_summary_table":"viaops_incident_adhoc_summary","p_incident_plus_da":"viaops_incident_adhoc_plus_da","summary_ds":{"dataSource":"/vitria/m3o/datasource/DefaultDomain/viaops_runtime_db"}}
 </Properties>
               <__subflow__>
-              <Flow index="1006" uuid="AS Input And Result" isNested="true" revision="385" acceptedSourceTypes="RDD" referenceURI="remote:///viaops.incident.adhoc/AS Input And Result" name="AS Input And Result" showFooter="true">
+              <Flow index="1006" uuid="AS Input And Result" isNested="true" revision="499" acceptedSourceTypes="RDD" referenceURI="remote:///viaops.incident.adhoc/AS Input And Result" name="AS Input And Result" showFooter="true">
                 <Node index="1006_1" uuid="25f17263-d33a-4cfe-8041-b52d2536e92c" type="outPort" label="Out" x="300" y="100" width="70" height="40">
                     <Source name="source" uid="0" outputType="RDD" dataType="String">
                       <DataSource category="#OUTPUT" id="undefined" name="Out1" nodeId="b9b46709-9421-4838-8491-32f25b5a1d37">
@@ -6357,7 +6357,10 @@ _as_caller=${as_caller}]]></ServiceParam>
                       <Script><![CDATA[val isAS: Boolean = com.vitria.spark.service.ADFService.isEnabled
   if (isAS) {
     println("AS Result")
-    val input = com.vitria.spark.service.ADFService.serviceProps.getProperty("override_setting")
+    val setting = com.vitria.spark.service.ADFService.serviceProps.getProperty("override_setting")
+    val from = com.vitria.spark.service.ADFService.serviceProps.getProperty("from")
+    val to = com.vitria.spark.service.ADFService.serviceProps.getProperty("to")
+    val input = s"""{"from":"${from}","to":"${to}","override_setting":${setting}} """
     val summary_ds_jndi = com.vitria.viaops.ad.DBUtils.parseDatasource("${summary_ds}").get("dataSource")
     com.vitria.spark.service.ADFService.setInput(input)
     val odaDs = com.vitria.spark.service.ADFService.getODADataSource()

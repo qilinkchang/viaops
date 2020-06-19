@@ -17,12 +17,12 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592445130522",
+  "lastDate": "1592532209539",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Adhoc processing for detecting and Identifying Incident in Anomaly table using \"Simple Deviation\" algorithm",
     "_RESOURCE_Type": "sparkm",
-    "__references__": "adf.subflow:///viaops.incident/Simple Deviation Evaluation@592,adf.subflow:///viaops.incident.adhoc/Adhoc Incident Source@156,adf.subflow:///viaops.incident.adhoc/Incident Output For IG@167,adf.subflow:///viaops.incident/Enrich Contextual Metric@677,adf.subflow:///viaops.incident.adhoc/Incident Output@162,adf.subflow:///viaops.incident.adhoc/AS Input And Result@385",
+    "__references__": "adf.subflow:///viaops.incident/Simple Deviation Evaluation@592,adf.subflow:///viaops.incident.adhoc/Adhoc Incident Source@156,adf.subflow:///viaops.incident.adhoc/Incident Output For IG@167,adf.subflow:///viaops.incident/Enrich Contextual Metric@677,adf.subflow:///viaops.incident.adhoc/Incident Output@163,adf.subflow:///viaops.incident.adhoc/AS Input And Result@499",
     "modelStatus": "valid",
     "name": "Adhoc VIAOps Simple Deviation Incident",
     "subflowReg": "",

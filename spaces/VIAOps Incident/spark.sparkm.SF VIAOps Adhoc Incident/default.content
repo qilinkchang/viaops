@@ -286,7 +286,7 @@ true
       <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"incident_plus_da_result","label":"Incident Adhoc da Result","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"","enumSource":"","runtimeControl":false}]</Properties>
       <Types>[{"name":"DA_result","namespace":"","schema":[{"name":"data","type":"string","_isOptional":false,"_isArray":false}]}]</Types>
       </Flow>
-      <Flow index="4000" uuid="Incident Output" isNested="true" revision="162" acceptedSourceTypes="DStream" registered="true" subflowPath="viaops.incident.adhoc" name="Incident Output" showFooter="true">
+      <Flow index="4000" uuid="Incident Output" isNested="true" revision="163" acceptedSourceTypes="DStream" registered="true" subflowPath="viaops.incident.adhoc" name="Incident Output" showFooter="true">
         <Node index="4001" uuid="ab621554-0fb1-4331-835f-988fe3a2d61e" type="inPort" label="incident" x="90" y="40" width="72.703125" height="40">
             <Output name="out" uid="0" outputType="DStream" dataType="class:viaops.incident_out" referenceType="viaops.incident_out">
               <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -1518,7 +1518,7 @@ true
 {"subFlow":"remote:///viaops.incident/Dimension Analysis","p_rest_uri":"https://via1/vitria-oi/rest","p_svc_uri":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","p_username":"do_admin","p_password":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","retry_times":"3","p_keyDimensionsOnly":"false"}
 </Properties>
               <__subflow__>
-              <Flow index="4008" uuid="Dimension Analysis" isNested="true" revision="861" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
+              <Flow index="4008" uuid="Dimension Analysis" isNested="true" revision="863" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
                 <Node index="4008_2" uuid="c66f3e18-0529-47a2-8808-a1360292c0bf" type="inPort" label="In" x="220" y="80" width="70" height="40">
                     <Output name="Out" uid="0" outputType="DStream" dataType="class:viaops.incident_for_grouping" referenceType="viaops.incident_for_grouping">
                       <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -1826,7 +1826,7 @@ def getToken(loginUrl : String) : String = {
     if (responseCode == HttpURLConnection.HTTP_OK) {
     	inputStream = connection.getInputStream()
     } else {
-      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
+      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
     	return null
     }
     //get response
@@ -1835,7 +1835,7 @@ def getToken(loginUrl : String) : String = {
     ret     
   } catch {
     case ex: Exception => {
-    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}]]" + ex.getMessage())
+    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}]]" + ex.getMessage())
     	return null
     }
   }
@@ -1919,7 +1919,7 @@ def invokeRest(url : String, token : String, paramers : Map[String, String]) : S
       </Libraries>
       <Resources>
       </Resources>
-      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_rest_uri","label":"REST URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"https://via1/vitria-oi/rest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_svc_uri","label":"Manifest URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_username","label":"Service Call User Name","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"do_admin","enumSource":"","runtimeControl":false},{"editorType":"password","*":{"label":"label","desc":"desc"},"group":"common","name":"p_password","label":"Service Call Password","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","constraints":"password","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"retry_times","label":"Number of Retry to Call REST","type":"long","hidden":"false","disabled":false,"resolveProperty":false,"value":"3","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_keyDimensionsOnly","label":"Service Call Key Dimension Flag","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"false","enumSource":"","runtimeControl":false}]</Properties>
+      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_rest_uri","label":"REST URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"https://via1/vitria-oi/rest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_svc_uri","label":"Manifest URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_username","label":"Service Call User Name","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"do_admin","enumSource":"","runtimeControl":false},{"editorType":"password","*":{"label":"label","desc":"desc"},"group":"common","name":"p_password","label":"Service Call Password","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","constraints":"password","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"retry_times","label":"Number of Retry to Call REST","type":"long","hidden":"false","disabled":false,"resolveProperty":false,"value":3,"enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_keyDimensionsOnly","label":"Service Call Key Dimension Flag","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"false","enumSource":"","runtimeControl":false}]</Properties>
       <Types>[{"name":"DA_out","namespace":"viaops","schema":[{"name":"data","type":"string","_isOptional":false,"_isArray":false}]}]</Types>
               </Flow>
 </__subflow__>
@@ -1941,7 +1941,7 @@ def invokeRest(url : String, token : String, paramers : Map[String, String]) : S
       </Resources>
       <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"name":"p_incident_table","label":"Incident Adhoc Table","type":"string","optional":"true","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_adhoc_history","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"name":"p_summary_table","label":"Incident Adhoc Summary Table","type":"string","optional":"false","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_adhoc_summary","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_rest_uri","label":"REST URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"https://via1/vitria-oi/rest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_svc_uri","label":"Manifest URI","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_username","label":"Service Call User Name","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"do_admin","enumSource":"","runtimeControl":false},{"editorType":"password","*":{"label":"label","desc":"desc"},"group":"common","name":"p_password","label":"Service Call Password","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","constraints":"password","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_keyDimensionsOnly","label":"Service Call Key Dimension Flag","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"false","enumSource":"","runtimeControl":false}]</Properties>
       </Flow>
-      <Flow index="5000" uuid="AS Input And Result" isNested="true" revision="385" acceptedSourceTypes="RDD" registered="true" subflowPath="viaops.incident.adhoc" name="AS Input And Result" showFooter="true">
+      <Flow index="5000" uuid="AS Input And Result" isNested="true" revision="499" acceptedSourceTypes="RDD" registered="true" subflowPath="viaops.incident.adhoc" name="AS Input And Result" showFooter="true">
         <Node index="5001" uuid="25f17263-d33a-4cfe-8041-b52d2536e92c" type="outPort" label="Out" x="300" y="100" width="70" height="40">
             <Source name="source" uid="0" outputType="RDD" dataType="String">
               <DataSource category="#OUTPUT" id="undefined" name="Out1" nodeId="b9b46709-9421-4838-8491-32f25b5a1d37">
@@ -1963,7 +1963,10 @@ def invokeRest(url : String, token : String, paramers : Map[String, String]) : S
               <Script><![CDATA[val isAS: Boolean = com.vitria.spark.service.ADFService.isEnabled
   if (isAS) {
     println("AS Result")
-    val input = com.vitria.spark.service.ADFService.serviceProps.getProperty("override_setting")
+    val setting = com.vitria.spark.service.ADFService.serviceProps.getProperty("override_setting")
+    val from = com.vitria.spark.service.ADFService.serviceProps.getProperty("from")
+    val to = com.vitria.spark.service.ADFService.serviceProps.getProperty("to")
+    val input = s"""{"from":"${from}","to":"${to}","override_setting":${setting}} """
     val summary_ds_jndi = com.vitria.viaops.ad.DBUtils.parseDatasource("${summary_ds}").get("dataSource")
     com.vitria.spark.service.ADFService.setInput(input)
     val odaDs = com.vitria.spark.service.ADFService.getODADataSource()

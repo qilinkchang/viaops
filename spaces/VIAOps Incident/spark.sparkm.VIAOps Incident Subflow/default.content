@@ -1,4 +1,4 @@
-<DataPipeModel description="Shared incident subflow for Simple Threshold and Score" name="VIAOps Incident Subflow" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="yes" batchDuration="P1M" checkpoint="" batchSampling="true" sparkMasterHost="">
+<DataPipeModel description="Shared incident subflow for Simple Threshold and Score" name="VIAOps Incident Subflow" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="yes" batchDuration="P1M" runAsService="false" checkpoint="" batchSampling="true" sparkMasterHost="">
   <HiveConfig>
     <Properties>
       <Property name="hive.warehouse.hdfs.source" value=""/>
@@ -850,7 +850,7 @@ spark.port.maxRetries=30]]></Spark>
       <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"name":"p_summary_table","label":"Incident Summary Table","type":"string","optional":"false","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_summary","enumSource":"","runtimeControl":false}]</Properties>
       <Types>[{"name":"incident_summary","namespace":"viaops","schema":[{"name":"id","type":"string","_isOptional":false,"_isArray":false},{"name":"service_name","type":"string","_isOptional":false,"_isArray":false},{"name":"sub_service_name","type":"string","_isOptional":false,"_isArray":false},{"name":"date_key","type":"long","_isOptional":false,"_isArray":false},{"name":"metric_id","type":"string","_isOptional":false,"_isArray":false},{"name":"algorithm","type":"string","_isOptional":false,"_isArray":false},{"name":"threshold_policy","type":"string","_isOptional":false,"_isArray":false},{"name":"operation","type":"string","_isOptional":false,"_isArray":false},{"name":"state","type":"string","_isOptional":false,"_isArray":false},{"name":"severity","type":"string","_isOptional":false,"_isArray":false},{"name":"derived_severity","type":"string","_isOptional":false,"_isArray":false},{"name":"max_severity","type":"string","_isOptional":false,"_isArray":false},{"name":"factor","type":"double","_isOptional":false,"_isArray":false},{"name":"contextual_metric_id","type":"string","_isOptional":false,"_isArray":false},{"name":"contextual_metric_start_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"system_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"exp_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"warmup_threshold","type":"double","_isOptional":false,"_isArray":false},{"name":"warmup_duration","type":"long","_isOptional":false,"_isArray":false},{"name":"dim_keys","type":"string","_isOptional":false,"_isArray":false},{"name":"dim_values","type":"string","_isOptional":false,"_isArray":false},{"name":"dim_pattern","type":"string","_isOptional":false,"_isArray":false},{"name":"config_metric_id","type":"string","_isOptional":false,"_isArray":false},{"name":"start_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"event_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"end_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"score_max","type":"double","_isOptional":false,"_isArray":false},{"name":"active_duration","type":"long","_isOptional":false,"_isArray":false},{"name":"peak_score","type":"double","_isOptional":false,"_isArray":false},{"name":"metric_measure_sum","type":"double","_isOptional":false,"_isArray":false},{"name":"metric_measure_max","type":"double","_isOptional":false,"_isArray":false},{"name":"metric_baseline_sum","type":"double","_isOptional":false,"_isArray":false},{"name":"metric_baseline_max","type":"double","_isOptional":false,"_isArray":false},{"name":"metric_deviation_max","type":"double","_isOptional":false,"_isArray":false},{"name":"contextual_metric_aggr_sum","type":"double","_isOptional":false,"_isArray":false},{"name":"contextual_metric_aggr_max","type":"double","_isOptional":false,"_isArray":false},{"name":"contextual_metric_baseline_sum","type":"double","_isOptional":false,"_isArray":false},{"name":"contextual_metric_baseline_max","type":"double","_isOptional":false,"_isArray":false},{"name":"contextual_metric_deviation_max","type":"double","_isOptional":false,"_isArray":false},{"name":"cooldown_duration","type":"long","_isOptional":false,"_isArray":false},{"name":"contextual_metric_detect_start_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"contextual_metric_detect_end_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"incident_duration","type":"long","_isOptional":false,"_isArray":false},{"name":"contextual_metric_duration","type":"long","_isOptional":false,"_isArray":false},{"name":"anomalies","type":"long","_isOptional":false,"_isArray":false},{"name":"mode","type":"string","_isOptional":false,"_isArray":false}]}]</Types>
       </Flow>
-      <Flow index="4000" uuid="Dimension Analysis" isNested="true" revision="861" acceptedSourceTypes="DStream" registered="true" subflowPath="viaops.incident" name="Dimension Analysis" showFooter="true">
+      <Flow index="4000" uuid="Dimension Analysis" isNested="true" revision="863" acceptedSourceTypes="DStream" registered="true" subflowPath="viaops.incident" name="Dimension Analysis" showFooter="true">
         <Node index="5002" uuid="c66f3e18-0529-47a2-8808-a1360292c0bf" type="inPort" label="In" x="220" y="80" width="70" height="40">
             <Output name="Out" uid="0" outputType="DStream" dataType="class:viaops.incident_for_grouping" referenceType="viaops.incident_for_grouping">
               <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -1158,7 +1158,7 @@ def getToken(loginUrl : String) : String = {
     if (responseCode == HttpURLConnection.HTTP_OK) {
     	inputStream = connection.getInputStream()
     } else {
-      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
+      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
     	return null
     }
     //get response
@@ -1167,7 +1167,7 @@ def getToken(loginUrl : String) : String = {
     ret     
   } catch {
     case ex: Exception => {
-    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}]]" + ex.getMessage())
+    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}]]" + ex.getMessage())
     	return null
     }
   }
@@ -1530,10 +1530,10 @@ def invokeRest(url : String, token : String, paramers : Map[String, String]) : S
             </Output>
             <Model format="json" caseClass="Enriched_Incident" isClassRef="false" fromHeader="true" addable="true" dropEvent="true" header="" timezone="UTC" daylight="false">
               <Schema>
-                <Field name="incident_da" initName="incident_da" label="incident_da" type="Incident_da" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true" excluded="false"/>
-                <Field name="contextual_metric_da" initName="contextual_metric_da" label="contextual_metric_da" type="Incident_da" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true" excluded="false"/>
-                <Field name="incident" initName="incident" label="incident" type="Incident" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false" excluded="false"/>
-                <Field name="status" initName="status" label="status" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="incident_da" initName="incident_da" label="incident_da" type="Incident_da" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="contextual_metric_da" initName="contextual_metric_da" label="contextual_metric_da" type="Incident_da" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="incident" initName="incident" label="incident" type="Incident" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="status" initName="status" label="status" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
                 <Field name="pfilters" initName="pfilters" label="pfilters" type="string" isDimension="false" isMeasure="false" clazz="Incident_da" initClazz="Incident_da" isArray="false" isOptional="true" excluded="false"/>
                 <Field name="aggrs" initName="aggrs" label="aggrs" type="Aggrs" isDimension="false" isMeasure="false" clazz="Incident_da" initClazz="Incident_da" isArray="false" isOptional="true" excluded="false"/>
                 <Field name="filters" initName="filters" label="filters" type="Filters" isDimension="false" isMeasure="false" clazz="Incident_da" initClazz="Incident_da" isArray="true" isOptional="true" excluded="false"/>

@@ -1,4 +1,4 @@
-<DataPipeModel description="Grouping Incident(s) for Notification" name="RT VIAOps Incident Grouping" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="yes" batchDuration="P1M" checkpoint="" batchSampling="true" batchSamplingNumber="200" sparkMasterHost="">
+<DataPipeModel description="Grouping Incident(s) for Notification" name="RT VIAOps Incident Grouping" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="yes" batchDuration="P1M" runAsService="false" checkpoint="" batchSampling="true" batchSamplingNumber="200" sparkMasterHost="">
   <HiveConfig>
     <Properties>
       <Property name="hive.warehouse.hdfs.source" value=""/>
@@ -13,7 +13,7 @@
       </Pipe>
     </Pipes>
     <Flows>
-      <Flow index="1000" uuid="Main" isNested="false" revision="5339" name="Main" showFooter="true">
+      <Flow index="1000" uuid="Main" isNested="false" revision="5340" name="Main" showFooter="true">
         <Node index="1001" uuid="0805067f-70d5-49bc-8004-53520e41aeaf" type="StreamTarget" label="Incident Group History" x="560" y="60" width="130" height="75">
             <Source name="source" uid="0" outputType="DStream" dataType="class:NormalizeIncidentGroupHistory_Class">
               <DataSource category="#OUTPUT" id="undefined" name="history" nodeId="22a08c35-6fb2-4d35-8a3f-8c6e6b2b36fd">
@@ -564,7 +564,7 @@
               <advancedProperties>
               </advancedProperties>
               <mapping>
-                <column name="group_id" type="VARCHAR" size="255" field="group_id" label="group_id" mtype="string" nillable="false" isArray="false" isPrimary="false"/>
+                <column name="group_id" type="VARCHAR" size="255" field="group_id" label="group_id" mtype="string" nillable="false" isArray="false" isPrimary="true"/>
                 <column name="trigger_incident_id" type="VARCHAR" size="255" field="trigger_incident_id" label="trigger_incident_id" mtype="string" nillable="false" isArray="false" isPrimary="false"/>
                 <column name="creating_rule_name" type="VARCHAR" size="255" field="creating_rule_name" label="creating_rule_name" mtype="string" nillable="false" isArray="false" isPrimary="false"/>
                 <column name="incident_ct" type="BIGINT" size="" field="incident_ct" label="incident_ct" mtype="long" nillable="false" isArray="false" isPrimary="false"/>

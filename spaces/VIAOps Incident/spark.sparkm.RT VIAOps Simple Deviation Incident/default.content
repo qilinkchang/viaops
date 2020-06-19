@@ -13,7 +13,7 @@
       </Pipe>
     </Pipes>
     <Flows>
-      <Flow index="1000" uuid="Main" isNested="false" revision="4408" name="Main" showFooter="true">
+      <Flow index="1000" uuid="Main" isNested="false" revision="4412" name="Main" showFooter="true">
         <Node index="1002" uuid="0805067f-70d5-49bc-8004-53520e41aeaf" type="StreamTarget" label="Capture Incident History" x="930" y="40" width="130" height="75">
             <Source name="source" uid="0" outputType="DStream" dataType="class:viaops.incident_store">
               <DataSource category="#OUTPUT" id="undefined" name="out" nodeId="5e671a68-7040-486e-8e36-3dbd9713b6c6">
@@ -713,7 +713,7 @@
               <CheckboxStatus isChecked="mixed"/>
             </Model>
         </Node>
-        <Node index="1015" uuid="bedc6a7c-35fc-49bb-87ed-43d4264fc1fe" type="Filter" label="Filter Groupable Incident" x="760" y="126" width="130" height="75">
+        <Node index="1015" uuid="bedc6a7c-35fc-49bb-87ed-43d4264fc1fe" type="Filter" label="Filter Warmup Incident" x="760" y="126" width="130" height="75">
             <Source name="source" uid="0" outputType="DStream" dataType="class:viaops.incident_out">
               <DataSource category="#OUTPUT" id="undefined" name="incident" nodeId="4d99603f-23d8-4f6e-8e4d-5b403d7caba1">
                 <Field name="algorithm" label="algorithm" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
@@ -827,7 +827,7 @@
             </Output>
             <Model filterModel="form">
               <Filters>
-                <Filter field="" op="sleText" arg="" value="" sleText="groupable=&apos;y&apos; and state != &apos;Warmup&apos;"/>
+                <Filter field="" op="sleText" arg="" value="" sleText="state != &apos;Warmup&apos;"/>
               </Filters>
             </Model>
         </Node>
@@ -1444,7 +1444,7 @@
 {"subFlow":"remote:///viaops.incident/Dimension Analysis","p_rest_uri":"https://via1/vitria-oi/rest","p_svc_uri":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","p_username":"do_admin","p_password":"&lt;KdTqEVMKNES7a0K7idKu7BB&gt;","retry_times":"3","p_keyDimensionsOnly":"false"}
 </Properties>
               <__subflow__>
-              <Flow index="1024" uuid="Dimension Analysis" isNested="true" revision="861" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
+              <Flow index="1024" uuid="Dimension Analysis" isNested="true" revision="863" acceptedSourceTypes="DStream" referenceURI="remote:///viaops.incident/Dimension Analysis" name="Dimension Analysis" showFooter="true">
                 <Node index="1024_2" uuid="c66f3e18-0529-47a2-8808-a1360292c0bf" type="inPort" label="In" x="220" y="80" width="70" height="40">
                     <Output name="Out" uid="0" outputType="DStream" dataType="class:incident_for_grouping" referenceType="viaops.incident_for_grouping">
                       <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -1752,7 +1752,7 @@ def getToken(loginUrl : String) : String = {
     if (responseCode == HttpURLConnection.HTTP_OK) {
     	inputStream = connection.getInputStream()
     } else {
-      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
+      logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}], responseCode["+responseCode+"], error["+stream2Msg(connection.getErrorStream())+"]")
     	return null
     }
     //get response
@@ -1761,7 +1761,7 @@ def getToken(loginUrl : String) : String = {
     ret     
   } catch {
     case ex: Exception => {
-    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] usename[${p_username}]/password[${p_password}]]" + ex.getMessage())
+    	logger.warn("+=+=Cannot getToken, Login URL["+loginUrl+"] username[${p_username}]/password[${p_password}]]" + ex.getMessage())
     	return null
     }
   }
@@ -5903,7 +5903,7 @@ spark.port.maxRetries=30]]></Spark>
       </Libraries>
       <Resources>
       </Resources>
-      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_anomaly_source","label":"Anomaly Source","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"hdfs://opsintel-prd-ncw-hahdfs/viaops/stream_anomaly","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_incident_table","label":"Incident Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_history","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_audit_table","label":"Incident Audit Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_audit","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_rest_uri","label":"REST URI","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"https://via1/vitria-oi/rest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_svc_uri","label":"Manifest URI","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_username","label":"Service Call User Name","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"do_admin","enumSource":"","runtimeControl":false},{"editorType":"password","*":{"label":"label","desc":"desc"},"group":"common","name":"p_password","label":"Service Call Password","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;YMhvbjuBvre0yz9r7Q!07afU78C7mp&gt;","runtimeControl":false,"constraints":"password"},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_incident_plus_da","label":"Incident Plus DA Result","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"hdfs://opsintel-prd-ncw-hahdfs/viaops/incident_plus_da","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_summary_table","label":"Incident Summary Table","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_summary","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_keyDimensionsOnly","label":"Service Call Key Dimension Flag","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"false","enumSource":"","runtimeControl":false}]</Properties>
+      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_anomaly_source","label":"Anomaly Source","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"hdfs://opsintel-prd-ncw-hahdfs/viaops/stream_anomaly","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_incident_table","label":"Incident Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_history","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_audit_table","label":"Incident Audit Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_audit","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_rest_uri","label":"REST URI","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"http://via1/vitria-oi/rest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_svc_uri","label":"Manifest URI","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"/app/dbp/user/do_admin/dbpm/DO - Manifest/AnalyticServiceManifest","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_username","label":"Service Call User Name","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"do_admin","enumSource":"","runtimeControl":false},{"editorType":"password","*":{"label":"label","desc":"desc"},"group":"common","name":"p_password","label":"Service Call Password","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"&lt;YMhvbjuBvre0yz9r7Q!07afU78C7mp&gt;","runtimeControl":false,"constraints":"password"},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_incident_plus_da","label":"Incident Plus DA Result","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"hdfs://opsintel-prd-ncw-hahdfs/viaops/incident_plus_da","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_summary_table","label":"Incident Summary Table","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_summary","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_keyDimensionsOnly","label":"Service Call Key Dimension Flag","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"false","enumSource":"","runtimeControl":false}]</Properties>
       <Types>[{"name":"da_result_save","namespace":"","schema":[{"name":"date_key","type":"long","_isOptional":false,"_isArray":false},{"name":"event_tm","type":"long","_isOptional":false,"_isArray":false},{"name":"id","type":"string","_isOptional":false,"_isArray":false},{"name":"incident_da","type":"string","_isOptional":false,"_isArray":false},{"name":"call_da","type":"string","_isOptional":false,"_isArray":false}]}]</Types>
       </Flow>
     </Flows>
