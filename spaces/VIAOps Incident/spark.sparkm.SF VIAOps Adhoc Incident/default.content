@@ -286,7 +286,7 @@ true
       <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"incident_plus_da_result","label":"Incident Adhoc da Result","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"","enumSource":"","runtimeControl":false}]</Properties>
       <Types>[{"name":"DA_result","namespace":"","schema":[{"name":"data","type":"string","_isOptional":false,"_isArray":false}]}]</Types>
       </Flow>
-      <Flow index="4000" uuid="Incident Output" isNested="true" revision="163" acceptedSourceTypes="DStream" registered="true" subflowPath="viaops.incident.adhoc" name="Incident Output" showFooter="true">
+      <Flow index="4000" uuid="Incident Output" isNested="true" revision="170" acceptedSourceTypes="DStream" registered="true" subflowPath="viaops.incident.adhoc" name="Incident Output" showFooter="true">
         <Node index="4001" uuid="ab621554-0fb1-4331-835f-988fe3a2d61e" type="inPort" label="incident" x="90" y="40" width="72.703125" height="40">
             <Output name="out" uid="0" outputType="DStream" dataType="class:viaops.incident_out" referenceType="viaops.incident_out">
               <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="true"/>
@@ -787,7 +787,7 @@ true
               <CheckboxStatus isChecked="false"/>
             </Model>
         </Node>
-        <Node index="4006" uuid="bedc6a7c-35fc-49bb-87ed-43d4264fc1fe" type="Filter" label="Filter Groupable Incident" x="260" y="112" width="130" height="75">
+        <Node index="4006" uuid="bedc6a7c-35fc-49bb-87ed-43d4264fc1fe" type="Filter" label="Filter Warmup Incident" x="260" y="112" width="130" height="75">
             <Source name="source" uid="0" outputType="DStream" dataType="class:viaops.incident_out">
               <DataSource category="#OUTPUT" id="undefined" name="out" nodeId="ab621554-0fb1-4331-835f-988fe3a2d61e">
                 <Field name="algorithm" label="algorithm" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
@@ -901,7 +901,7 @@ true
             </Output>
             <Model filterModel="form">
               <Filters>
-                <Filter field="" op="sleText" arg="" value="" sleText="groupable=&apos;y&apos; and state != &apos;Warmup&apos;"/>
+                <Filter field="" op="sleText" arg="" value="" sleText="start_tm &gt; 0"/>
               </Filters>
             </Model>
         </Node>

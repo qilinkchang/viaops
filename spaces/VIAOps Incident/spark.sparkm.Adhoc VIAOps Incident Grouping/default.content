@@ -13,7 +13,7 @@
       </Pipe>
     </Pipes>
     <Flows>
-      <Flow index="1000" uuid="Main" isNested="false" revision="5472" name="Main" showFooter="true">
+      <Flow index="1000" uuid="Main" isNested="false" revision="5476" name="Main" showFooter="true">
         <Node index="1001" uuid="0805067f-70d5-49bc-8004-53520e41aeaf" type="StreamTarget" label="Incident Group History" x="420" y="29" width="130" height="75">
             <Source name="source" uid="0" outputType="DStream" dataType="class:NormalizeIncidentGroupHistory_Class">
               <DataSource category="#OUTPUT" id="undefined" name="history" nodeId="22a08c35-6fb2-4d35-8a3f-8c6e6b2b36fd">
@@ -335,7 +335,7 @@
                 <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
             </Output>
             <Model type="table" sourceType="jdbc" dataSpeed="" dataVolume="" dataSource="/vitria/m3o/datasource/DefaultDomain/viaops_runtime_db" tableSchema="viaops_runtime_db" autoGenerate="true" tableInfo="{}" mode="overwrite" purge="none" tableName="${p_summary_table}">
-              <__binding__><![CDATA[{"dataSource":"summary_ds"}]]></__binding__>
+              <__binding__><![CDATA[{"dataSource":""}]]></__binding__>
               <datasource name="/vitria/m3o/datasource/DefaultDomain/viaops_runtime_db">
               </datasource>
               <uniqueColumns>
@@ -4394,7 +4394,7 @@ _as_caller=${as_caller}]]></ServiceParam>
                 <Compute op="sleText" field="*" arg="" value="to" outputType="string" alias="to" wordWarp="true"/>
                 <Compute op="sleText" field="*" arg="" value="subject" outputType="string" alias="subject" wordWarp="true"/>
                 <Compute op="sleText" field="*" arg="" value="payload" outputType="string" alias="payload" wordWarp="true"/>
-                <Compute op="sleText" field="" arg="" value="substring(payload,locate(&quot;group_date_key&quot;,payload,1)+10,8)" outputType="string" alias="date_key" wordWarp="true"/>
+                <Compute op="sleText" field="" arg="" value="substring(payload,locate(&quot;group_date_key&quot;,payload,1)+16,8)" outputType="string" alias="date_key" wordWarp="true"/>
               </Computes>
               <CheckboxStatus isChecked="true"/>
             </Model>
@@ -4410,9 +4410,10 @@ _as_caller=${as_caller}]]></ServiceParam>
           <Variables><![CDATA[val isAS: Boolean = com.vitria.spark.service.ADFService.isEnabled
 if (isAS) {
     println("AS Result")
-    val input = com.vitria.spark.service.ADFService.serviceProps.getProperty("override_setting")
+    val setting = com.vitria.spark.service.ADFService.serviceProps.getProperty("override_setting")
+    val input = s"""{"from":"${from}","to":"${to}","override_setting":${setting}} """
     com.vitria.spark.service.ADFService.setInput(input)
-    val summary_ds_jndi = com.vitria.viaops.ad.DBUtils.parseDatasource("${summary_ds}").get("dataSource")
+    val summary_ds_jndi = com.vitria.viaops.ad.DBUtils.parseDatasource("{dataSource=/vitria/m3o/datasource/DefaultDomain/viaops_runtime_db}").get("dataSource")
     val odaDs = com.vitria.spark.service.ADFService.getODADataSource()
     com.vitria.spark.service.ADFService.addTable("${p_history_table}", odaDs)
     com.vitria.spark.service.ADFService.addTable("${p_notification_table}", odaDs)
@@ -4473,7 +4474,7 @@ _as_caller=${as_caller}]]></ServiceParam>
       </Libraries>
       <Resources>
       </Resources>
-      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_input_table","label":"Input Incidents Table","desc":"Incident DA Table","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_adhoc_plus_da","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_history_table","label":"Incident Group Table","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_group_adhoc_history","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_summary_table","label":"Incident Group Summary Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_group_adhoc_summary","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_notification_table","label":"Incident Group Notification Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_group_adhoc_notification","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"from","label":"From date (yyyy-MM-dd)","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"2020-06-01","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"to","label":"To date (yyyy-MM-dd)","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"2020-06-07","enumSource":"","runtimeControl":false},{"editorType":"_dataSourceSelector","*":{"label":"label","desc":"desc"},"name":"summary_ds","label":"Summary Table Datasource","type":"object","hidden":"false","disabled":false,"resolveProperty":false,"value":{"dataSource":"/vitria/m3o/datasource/DefaultDomain/viaops_runtime_db"},"enumSource":"","runtimeControl":false,"constraints":{"type":"dataSource","args":{}}},{"editorType":"_dataSourceSelector","*":{"label":"label","desc":"desc"},"name":"dataSource","label":"Configuration Datasource","type":"object","hidden":"false","disabled":false,"resolveProperty":false,"value":{"dataSource":"/vitria/m3o/datasource/DefaultDomain/viaops_as_db","databaseURL":"jdbc:vitriaas:memory:as;create=true","userName":"as","password":"&lt;Nql3L@AKo8npw4sZpvgP&gt;","driverType":"com.vitria.viaops.jdbc.ASDriver"},"enumSource":"","runtimeControl":false,"constraints":{"type":"dataSource","args":{}}},{"editorType":"textArea","*":{"label":"label","desc":"desc"},"group":"common","name":"override_setting","label":"Configuration JSON","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"","runtimeControl":false,"constraints":{"type":"textArea","args":{"rows":"4","itemStyle":"height: auto;"}}}]</Properties>
+      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_input_table","label":"Input Incidents Table","desc":"Incident DA Table","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_adhoc_plus_da","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_history_table","label":"Incident Group Table","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_group_adhoc_history","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_summary_table","label":"Incident Group Summary Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_group_adhoc_summary","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"p_notification_table","label":"Incident Group Notification Table","type":"string","optional":false,"hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_group_adhoc_notification","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"from","label":"From date (yyyy-MM-dd)","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"2020-06-01","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"to","label":"To date (yyyy-MM-dd)","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"2020-06-07","enumSource":"","runtimeControl":false},{"editorType":"_dataSourceSelector","*":{"label":"label","desc":"desc"},"name":"dataSource","label":"Configuration Datasource","type":"object","hidden":"false","disabled":false,"resolveProperty":false,"value":{"dataSource":"/vitria/m3o/datasource/DefaultDomain/viaops_as_db","databaseURL":"jdbc:vitriaas:memory:as;create=true","userName":"as","password":"&lt;Nql3L@AKo8npw4sZpvgP&gt;","driverType":"com.vitria.viaops.jdbc.ASDriver"},"enumSource":"","runtimeControl":false,"constraints":{"type":"dataSource","args":{}}},{"editorType":"textArea","*":{"label":"label","desc":"desc"},"group":"common","name":"override_setting","label":"Configuration JSON","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"","runtimeControl":false,"constraints":{"type":"textArea","args":{"rows":"4","itemStyle":"height: auto;"}}}]</Properties>
       </Flow>
     </Flows>
   </ModelInfo>

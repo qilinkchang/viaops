@@ -17,7 +17,7 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592532209561",
+  "lastDate": "1592982939987",
   "owner": "vtbaadmin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for reading Anomaly from Anomaly Table",
@@ -25,7 +25,7 @@
     "__references__": "adf.subflow:///viaops.incident/Incident Summary@357,adf.subflow:///viaops.incident/Dimension Analysis@863",
     "modelStatus": "valid",
     "name": "SF VIAOps Adhoc Incident",
-    "subflowReg": "{\"Adhoc Incident Source\":{\"revision\":\"156\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"Incident Output For IG\":{\"revision\":\"167\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"Incident Output\":{\"revision\":\"163\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"AS Input And Result\":{\"revision\":\"499\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"}}",
+    "subflowReg": "{\"Adhoc Incident Source\":{\"revision\":\"156\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"Incident Output For IG\":{\"revision\":\"167\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"Incident Output\":{\"revision\":\"170\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"},\"AS Input And Result\":{\"revision\":\"499\",\"registered\":true,\"subflowPath\":\"viaops.incident.adhoc\"}}",
     "typeDeps": "{\"dependencies\":[],\"contributes\":[\"viaops.incident_score_anomaly\"]}",
     "typeReg": ""
   }
