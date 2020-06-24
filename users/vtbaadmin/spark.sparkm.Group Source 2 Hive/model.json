@@ -1,0 +1,36 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "fileref": "ModelContentFile1",
+      "name": "registeredTypes"
+    },
+    {
+      "fileref": "ModelContentFile2",
+      "name": "usedTypes"
+    },
+    {
+      "fileref": "ModelContentFile3",
+      "name": "miniviewData"
+    },
+    {
+      "fileref": "ModelContentFile4",
+      "name": "debug.configuration"
+    }
+  ],
+  "lastDate": "1592987377124",
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Simulate that insert records into incident history table.\n",
+    "_RESOURCE_Type": "sparkm",
+    "__references__": "",
+    "modelStatus": "valid",
+    "name": "Group Source 2 Hive",
+    "subflowReg": "",
+    "typeDeps": "{\"dependencies\":[\"viaops.anomaly.Raw_Anomaly\"],\"contributes\":[]}",
+    "typeReg": ""
+  }
+}

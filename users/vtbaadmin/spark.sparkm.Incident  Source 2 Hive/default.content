@@ -1,0 +1,241 @@
+<DataPipeModel description="Simulate that insert records into anomaly history table." name="Incident  Source 2 Hive" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="auto" batchDuration="P1M" runAsService="false" checkpoint="" batchSampling="true" sparkMasterHost="">
+  <HiveConfig>
+    <Properties>
+      <Property name="hive.warehouse.hdfs.source" value=""/>
+      <Property name="hive.metastore.data.source" value=""/>
+      <Property name="hive.server2.thrift.port" value=""/>
+      <Property name="hive.db.schema" value=""/>
+    </Properties>
+  </HiveConfig>
+  <ModelInfo validated="true">
+    <Pipes>
+      <Pipe index="1000" uuid="" name="(main)">
+      </Pipe>
+    </Pipes>
+    <Flows>
+      <Flow index="1000" uuid="Main" isNested="false" revision="39" name="Main" showFooter="true">
+        <Node index="1001" uuid="0601a2e9-5857-47c0-8c59-10245f930497" type="StreamSource" label="Step 1" x="80" y="29" width="130" height="75">
+            <Output name="Out1" uid="0" outputType="DStream" dataType="String">
+              <Field name="data" label="data" type="string" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model type="textFileStream" url="${input}" nameFilter="${filter}" include="true" initialOffset="earliest" maxFileSizeInUnit="1" maxFileSizeUnit="mb" maxFileSize="1048576" speficiedStartPosition="false" isOutputFileName="false" isSkipFirstLine="false" dataSpeed="" dataVolume="">
+              <Sample><![CDATA[{"adm_name":"viaops_metric_stva_application-5/5","window_size":300,"window_step":300,"start_tm":1588903100,"end_tm":1588903400,"generated_tm":1588903805,"metric_id":"Network|Spartanburg|CAPM_LB_F5|Port Errors|cluster|1509231787","dow":"fri","algorithm":"simple_threshold","aggr_metric":2600,"last_interval_metric":10.28,"baseline_median":2,"baseline_stdev":1.1853335823362643,"baseline_mad":0.009999999999999953,"baseline_stdev_hly":0.04513019713980372,"baseline_mad_hly":0.009999999999999953,"baseline_stdev_wkl":1.3882552061686968,"baseline_mad_wkl":0.009999999999999953,"baseline_stdev_wkh":0.05732115042211109,"baseline_mad_wkh":0.0,"baseline_avg":0.31,"median_baseline":0.21,"mean_baseline":0.31771701388888957,"baseline_stats":"weekly","score_method":"zscore","zscore":-0.00720328651069707,"mzscore":-1.0,"cscore":-0.034482758620689495,"deviation":-0.009999999999999953,"upper_score":0.5114333422594943,"lower_score":-0.01440657302139418,"conf_id":59,"trigger":"upper","new_metric":false,"severity":10,"is_anomaly":true,"date_key":20200508,"base_metric_id":"Network|Spartanburg|CAPM_LB_F5|Port Errors","dim_keys":"[\"host\",\"node\"]","dim_values":"[\"cluster\", \"1509231787\"]"}
+{"adm_name":"viaops_metric_stva_application-5/5","window_size":300,"window_step":300,"start_tm":1588903200,"end_tm":1588903800,"generated_tm":1588903805,"metric_id":"Network|Spartanburg|CAPM_LB_F5|Port Errors|cluster|1509231787","dow":"fri","algorithm":"simple_threshold","aggr_metric":2400,"last_interval_metric":10.28,"baseline_median":2,"baseline_stdev":1.1853335823362643,"baseline_mad":0.009999999999999953,"baseline_stdev_hly":0.04513019713980372,"baseline_mad_hly":0.009999999999999953,"baseline_stdev_wkl":1.3882552061686968,"baseline_mad_wkl":0.009999999999999953,"baseline_stdev_wkh":0.05732115042211109,"baseline_mad_wkh":0.0,"baseline_avg":0.31,"median_baseline":0.21,"mean_baseline":0.31771701388888957,"baseline_stats":"weekly","score_method":"zscore","zscore":-0.00720328651069707,"mzscore":-1.0,"cscore":-0.034482758620689495,"deviation":-0.009999999999999953,"upper_score":0.5114333422594943,"lower_score":-0.01440657302139418,"conf_id":59,"trigger":"upper","new_metric":false,"severity":10,"is_anomaly":true,"date_key":20200508,"base_metric_id":"Network|Spartanburg|CAPM_LB_F5|Port Errors","dim_keys":"[\"host\",\"node\"]","dim_values":"[\"cluster\", \"1509231787\"]"}]]></Sample>
+            </Model>
+        </Node>
+        <Node index="1002" uuid="1ad0b926-08d8-422a-889c-f29598ec5f91" type="Parse" label="Step 2" x="329" y="20" width="130" height="95">
+            <Source name="source" uid="0" outputType="DStream" dataType="String">
+              <DataSource category="#OUTPUT" id="undefined" name="Out1" nodeId="0601a2e9-5857-47c0-8c59-10245f930497">
+                <Field name="data" label="data" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="false"/>
+              </DataSource>
+            </Source>
+            <Output name="Out1" uid="0" outputType="DStream" dataType="class:viaops.anomaly.Raw_Anomaly" referenceType="viaops.anomaly.Raw_Anomaly">
+              <Field name="adm_name" label="adm_name" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="algorithm_name" label="algorithm_name" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="window_size" label="window_size" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="window_step" label="window_step" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="start_tm" label="start_tm" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="end_tm" label="end_tm" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="generated_tm" label="generated_tm" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="metric_id" label="metric_id" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="dow" label="dow" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="aggr_metric" label="aggr_metric" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="last_interval_metric" label="last_interval_metric" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_median" label="baseline_median" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev" label="baseline_stdev" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad" label="baseline_mad" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev_hly" label="baseline_stdev_hly" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad_hly" label="baseline_mad_hly" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev_wkl" label="baseline_stdev_wkl" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad_wkl" label="baseline_mad_wkl" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev_wkh" label="baseline_stdev_wkh" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad_wkh" label="baseline_mad_wkh" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_avg" label="baseline_avg" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="median_baseline" label="median_baseline" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="mean_baseline" label="mean_baseline" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stats" label="baseline_stats" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="score_method" label="score_method" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="zscore" label="zscore" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="mzscore" label="mzscore" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="cscore" label="cscore" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="deviation" label="deviation" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="upper_score" label="upper_score" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="lower_score" label="lower_score" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="lower_threshold" label="lower_threshold" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="upper_threshold" label="upper_threshold" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="conf_id" label="conf_id" type="integer" clazz="" isArray="false" isOptional="true"/>
+              <Field name="trigger" label="trigger" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="new_metric" label="new_metric" type="boolean" clazz="" isArray="false" isOptional="true"/>
+              <Field name="severity" label="severity" type="integer" clazz="" isArray="false" isOptional="false"/>
+              <Field name="is_anomaly" label="is_anomaly" type="boolean" clazz="" isArray="false" isOptional="false"/>
+              <Field name="date_key" label="date_key" type="integer" clazz="" isArray="false" isOptional="false"/>
+              <Field name="base_metric_id" label="base_metric_id" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="dim_keys" label="dim_keys" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="dim_values" label="dim_values" type="string" clazz="" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Output name="Dropped" uid="1" outputType="DStream" dataType="(String,String)">
+              <Field name="___error___" label="error" type="string" isArray="false" isOptional="false"/>
+              <Field name="data" label="data" type="string" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model format="json" caseClass="viaops.anomaly.Raw_Anomaly" isClassRef="true" fromHeader="true" addable="false" dropEvent="true" header=":: low_threshold = 2500, med_threshold=5000, high_threshold=10000, warmup_threshold=2000," timezone="Asia/Shanghai" daylight="false">
+              <Schema>
+                <Field name="adm_name" initName="adm_name" label="adm_name" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="algorithm_name" initName="algorithm_name" label="algorithm_name" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="window_size" initName="window_size" label="window_size" type="long" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="window_step" initName="window_step" label="window_step" type="long" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="start_tm" initName="start_tm" label="start_tm" type="long" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="end_tm" initName="end_tm" label="end_tm" type="long" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="generated_tm" initName="generated_tm" label="generated_tm" type="long" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="metric_id" initName="metric_id" label="metric_id" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="dow" initName="dow" label="dow" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="algorithm" initName="algorithm" label="algorithm" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="aggr_metric" initName="aggr_metric" label="aggr_metric" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="last_interval_metric" initName="last_interval_metric" label="last_interval_metric" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_median" initName="baseline_median" label="baseline_median" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_stdev" initName="baseline_stdev" label="baseline_stdev" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_mad" initName="baseline_mad" label="baseline_mad" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_stdev_hly" initName="baseline_stdev_hly" label="baseline_stdev_hly" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_mad_hly" initName="baseline_mad_hly" label="baseline_mad_hly" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_stdev_wkl" initName="baseline_stdev_wkl" label="baseline_stdev_wkl" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_mad_wkl" initName="baseline_mad_wkl" label="baseline_mad_wkl" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_stdev_wkh" initName="baseline_stdev_wkh" label="baseline_stdev_wkh" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_mad_wkh" initName="baseline_mad_wkh" label="baseline_mad_wkh" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_avg" initName="baseline_avg" label="baseline_avg" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="median_baseline" initName="median_baseline" label="median_baseline" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="mean_baseline" initName="mean_baseline" label="mean_baseline" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="baseline_stats" initName="baseline_stats" label="baseline_stats" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="score_method" initName="score_method" label="score_method" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="zscore" initName="zscore" label="zscore" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="mzscore" initName="mzscore" label="mzscore" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="cscore" initName="cscore" label="cscore" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="deviation" initName="deviation" label="deviation" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="upper_score" initName="upper_score" label="upper_score" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="lower_score" initName="lower_score" label="lower_score" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="lower_threshold" initName="lower_threshold" label="lower_threshold" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="upper_threshold" initName="upper_threshold" label="upper_threshold" type="double" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="conf_id" initName="conf_id" label="conf_id" type="integer" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="trigger" initName="trigger" label="trigger" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="new_metric" initName="new_metric" label="new_metric" type="boolean" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="true" excluded="false"/>
+                <Field name="severity" initName="severity" label="severity" type="integer" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="is_anomaly" initName="is_anomaly" label="is_anomaly" type="boolean" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="date_key" initName="date_key" label="date_key" type="integer" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="base_metric_id" initName="base_metric_id" label="base_metric_id" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="dim_keys" initName="dim_keys" label="dim_keys" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+                <Field name="dim_values" initName="dim_values" label="dim_values" type="string" isDimension="false" isMeasure="false" clazz="" initClazz="" isArray="false" isOptional="false" excluded="false"/>
+              </Schema>
+            </Model>
+        </Node>
+        <Node index="1003" uuid="585923c7-7bba-4071-866d-02cb081db46b" type="StreamTarget" label="Step 3" x="560" y="29" width="130" height="75">
+            <Source name="source" uid="0" outputType="DStream" dataType="class:viaops.anomaly.Raw_Anomaly">
+              <DataSource category="#OUTPUT" id="undefined" name="Out1" nodeId="1ad0b926-08d8-422a-889c-f29598ec5f91">
+                <Field name="adm_name" label="adm_name" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="algorithm_name" label="algorithm_name" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="window_size" label="window_size" type="long" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="window_step" label="window_step" type="long" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="start_tm" label="start_tm" type="long" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="end_tm" label="end_tm" type="long" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="generated_tm" label="generated_tm" type="long" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="metric_id" label="metric_id" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="dow" label="dow" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="algorithm" label="algorithm" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="aggr_metric" label="aggr_metric" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="last_interval_metric" label="last_interval_metric" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_median" label="baseline_median" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_stdev" label="baseline_stdev" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_mad" label="baseline_mad" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_stdev_hly" label="baseline_stdev_hly" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_mad_hly" label="baseline_mad_hly" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_stdev_wkl" label="baseline_stdev_wkl" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_mad_wkl" label="baseline_mad_wkl" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_stdev_wkh" label="baseline_stdev_wkh" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_mad_wkh" label="baseline_mad_wkh" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_avg" label="baseline_avg" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="median_baseline" label="median_baseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="mean_baseline" label="mean_baseline" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="baseline_stats" label="baseline_stats" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="score_method" label="score_method" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="zscore" label="zscore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="mzscore" label="mzscore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="cscore" label="cscore" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="deviation" label="deviation" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="upper_score" label="upper_score" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="lower_score" label="lower_score" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="lower_threshold" label="lower_threshold" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="upper_threshold" label="upper_threshold" type="double" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="conf_id" label="conf_id" type="integer" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="trigger" label="trigger" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="new_metric" label="new_metric" type="boolean" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="true"/>
+                <Field name="severity" label="severity" type="integer" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="is_anomaly" label="is_anomaly" type="boolean" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="date_key" label="date_key" type="integer" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="base_metric_id" label="base_metric_id" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="dim_keys" label="dim_keys" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="dim_values" label="dim_values" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+              </DataSource>
+            </Source>
+            <Output name="out" uid="0" outputType="DStream" dataType="class:viaops.anomaly.Raw_Anomaly">
+              <Field name="adm_name" label="adm_name" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="algorithm_name" label="algorithm_name" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="window_size" label="window_size" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="window_step" label="window_step" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="start_tm" label="start_tm" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="end_tm" label="end_tm" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="generated_tm" label="generated_tm" type="long" clazz="" isArray="false" isOptional="false"/>
+              <Field name="metric_id" label="metric_id" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="dow" label="dow" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="algorithm" label="algorithm" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="aggr_metric" label="aggr_metric" type="double" clazz="" isArray="false" isOptional="false"/>
+              <Field name="last_interval_metric" label="last_interval_metric" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_median" label="baseline_median" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev" label="baseline_stdev" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad" label="baseline_mad" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev_hly" label="baseline_stdev_hly" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad_hly" label="baseline_mad_hly" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev_wkl" label="baseline_stdev_wkl" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad_wkl" label="baseline_mad_wkl" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stdev_wkh" label="baseline_stdev_wkh" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_mad_wkh" label="baseline_mad_wkh" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_avg" label="baseline_avg" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="median_baseline" label="median_baseline" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="mean_baseline" label="mean_baseline" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="baseline_stats" label="baseline_stats" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="score_method" label="score_method" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="zscore" label="zscore" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="mzscore" label="mzscore" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="cscore" label="cscore" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="deviation" label="deviation" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="upper_score" label="upper_score" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="lower_score" label="lower_score" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="lower_threshold" label="lower_threshold" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="upper_threshold" label="upper_threshold" type="double" clazz="" isArray="false" isOptional="true"/>
+              <Field name="conf_id" label="conf_id" type="integer" clazz="" isArray="false" isOptional="true"/>
+              <Field name="trigger" label="trigger" type="string" clazz="" isArray="false" isOptional="true"/>
+              <Field name="new_metric" label="new_metric" type="boolean" clazz="" isArray="false" isOptional="true"/>
+              <Field name="severity" label="severity" type="integer" clazz="" isArray="false" isOptional="false"/>
+              <Field name="is_anomaly" label="is_anomaly" type="boolean" clazz="" isArray="false" isOptional="false"/>
+              <Field name="date_key" label="date_key" type="integer" clazz="" isArray="false" isOptional="false"/>
+              <Field name="base_metric_id" label="base_metric_id" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="dim_keys" label="dim_keys" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="dim_values" label="dim_values" type="string" clazz="" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model type="hiveTable" tableName="${output}" partitionType="eventField" partitionSize="" partitionColumn="date_key" partitionIndex="39" timeColumn="" overwrite="true" partitionNum="0" dataSpeed="" dataVolume="">
+            </Model>
+        </Node>
+        <Link srcId="0601a2e9-5857-47c0-8c59-10245f930497" srcPort="dout:0" tgtId="1ad0b926-08d8-422a-889c-f29598ec5f91" tgtPort="in:0"/>
+        <Link srcId="1ad0b926-08d8-422a-889c-f29598ec5f91" srcPort="dout:0" tgtId="585923c7-7bba-4071-866d-02cb081db46b" tgtPort="in:0"/>
+      <Codes>
+      </Codes>
+      <Libraries>
+      </Libraries>
+      <Resources>
+      </Resources>
+      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"input","label":"input","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"hdfs://hadoop:9000/kai/test1535","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"output","label":"output","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"adhoc_viaops_metric_history","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"filter","label":"filter","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"score*","enumSource":"","runtimeControl":false}]</Properties>
+      </Flow>
+    </Flows>
+  </ModelInfo>
+</DataPipeModel>

@@ -1,0 +1,75 @@
+<DataPipeModel description="Simulate that insert records into incident history table.&#x000A;" name="Incident History source" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" streamingAutoStart="false" useHive="yes" batchDuration="P1M" runAsService="false" checkpoint="" batchSampling="true" sparkMasterHost="">
+  <HiveConfig>
+    <Properties>
+      <Property name="hive.warehouse.hdfs.source" value=""/>
+      <Property name="hive.metastore.data.source" value=""/>
+      <Property name="hive.server2.thrift.port" value=""/>
+      <Property name="hive.db.schema" value=""/>
+    </Properties>
+  </HiveConfig>
+  <ModelInfo validated="true">
+    <Pipes>
+      <Pipe index="1000" uuid="" name="(main)">
+      </Pipe>
+    </Pipes>
+    <Flows>
+      <Flow index="1000" uuid="Main" isNested="false" revision="70" name="Main" showFooter="true">
+        <Node index="1001" uuid="0601a2e9-5857-47c0-8c59-10245f930497" type="StreamSource" label="Step 1" x="80" y="29" width="130" height="75">
+            <Output name="Out1" uid="0" outputType="DStream" dataType="String">
+              <Field name="data" label="data" type="string" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model type="textFileStream" url="${input}" nameFilter="" include="true" initialOffset="earliest" maxFileSizeInUnit="1" maxFileSizeUnit="mb" maxFileSize="1048576" speficiedStartPosition="false" isOutputFileName="false" isSkipFirstLine="false" dataSpeed="" dataVolume="">
+              <Sample><![CDATA[{"incident":{"algorithm":"simple_threshold","start_tm":1587312000,"end_tm":0,"event_tm":1587312000,"metric_id":"STVA|Network|Firewall|Port Utilization Out Max","id":"202004081403#1","state":"Active","operation":"Create","window":null,"score":null,"peak_score":null,"severity":"Low","derived_severity":"Low","max_severity":"Low","metric_measure":null,"metric_baseline":null,"factor":null,"metric_deviation":null,"contextual_metric_id":null,"contextual_metric_start_tm":null,"contextual_metric_end_tm":null,"contextual_metric_aggr":null,"contextual_metric_baseline":null,"contextual_metric_deviation":null,"causation_measure":null,"causation_top_count":null,"causation_min_measure":null,"causation_rule_name":null,"causation_suppl_measure":null,"expire_tm":null,"generated_tm":1587312000,"date_key":20200420,"threshold_policy":null,"threshold_low":null,"threshold_med":null,"threshold_high":null,"target":"","service_name":"Connectivity","sub_service_name":"Network","correlation_end_tm":1587313200,"active_duration":300,"config_metric_id":"STVA|Network|Firewall|${metric_id}","dim_keys":"[\"metric_id\"]","dim_pattern":"[\"${metric_id}\"]","dim_values":"[\"Port Utilization Out\"]","alternate_id":"CRQ001578993000","cooldown_duration":600,"mode":"p"},"status":"OK"}
+{"incident":{"algorithm":"simple_threshold","start_tm":1587313800,"end_tm":0,"event_tm":1587313800,"metric_id":"STVA|*|*|Planned Maintenance","id":"202004201403#2","state":"Active","operation":"Create","window":null,"score":null,"peak_score":null,"severity":"Low","derived_severity":"Low","max_severity":"Low","metric_measure":null,"metric_baseline":null,"factor":null,"metric_deviation":null,"contextual_metric_id":null,"contextual_metric_start_tm":null,"contextual_metric_end_tm":null,"contextual_metric_aggr":null,"contextual_metric_baseline":null,"contextual_metric_deviation":null,"causation_measure":null,"causation_top_count":null,"causation_min_measure":null,"causation_rule_name":null,"causation_suppl_measure":null,"expire_tm":null,"generated_tm":1587312000,"date_key":20200420,"threshold_policy":null,"threshold_low":null,"threshold_med":null,"threshold_high":null,"target":"","service_name":"Connectivity","sub_service_name":"Network","correlation_end_tm":1587315000,"active_duration":300,"config_metric_id":"STVA|*|*|${metric_id}","dim_keys":"[\"metric_id\"]","dim_pattern":"[\"${metric_id}\"]","dim_values":"[\"Planned Maintenance\"]","alternate_id":"CRQ001578993000","cooldown_duration":600,"mode":"p"},"status":"OK"}
+{"incident":{"algorithm":"score","start_tm":1587314700,"end_tm":0,"event_tm":1587314700,"metric_id":"STVA|Application|IP2MAC|DLNDelay","id":"202004201403#3","state":"Active","operation":"Create","window":null,"score":null,"peak_score":null,"severity":"Low","derived_severity":"Low","max_severity":"Medium","metric_measure":null,"metric_baseline":null,"factor":null,"metric_deviation":null,"contextual_metric_id":null,"contextual_metric_start_tm":null,"contextual_metric_end_tm":null,"contextual_metric_aggr":null,"contextual_metric_baseline":null,"contextual_metric_deviation":null,"causation_measure":null,"causation_top_count":null,"causation_min_measure":null,"causation_rule_name":null,"causation_suppl_measure":null,"expire_tm":null,"generated_tm":1587315600,"date_key":20200420,"threshold_policy":null,"threshold_low":null,"threshold_med":null,"threshold_high":null,"target":"","service_name":"Connectivity","sub_service_name":"Network","correlation_end_tm":1587316200,"active_duration":300,"config_metric_id":"STVA|Application|IP2MAC|${metric_id}","dim_keys":"[\"metric_id\"]","dim_pattern":"[\"${metric_id}\"]","dim_values":"[\"DLNDelay\"]","alternate_id":"CRQ001578993000","cooldown_duration":300,"mode":"p"},"status":"OK"}]]></Sample>
+            </Model>
+        </Node>
+        <Node index="1003" uuid="585923c7-7bba-4071-866d-02cb081db46b" type="StreamTarget" label="Step 3" x="540" y="20" width="130" height="75">
+            <Source name="source" uid="0" outputType="DStream" dataType="class:Step2_Class">
+              <DataSource category="#OUTPUT" id="undefined" name="out" nodeId="af99a1f4-060b-4ae4-872d-f95d3f7cba7c">
+                <Field name="data" label="data" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+                <Field name="date_key" label="date_key" type="string" isDimension="false" isMeasure="false" clazz="" isArray="false" isOptional="false"/>
+              </DataSource>
+            </Source>
+            <Output name="out" uid="0" outputType="DStream" dataType="class:Step2_Class">
+              <Field name="data" label="data" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="date_key" label="date_key" type="string" clazz="" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model type="hiveTable" tableName="${output}" partitionType="eventField" partitionSize="" partitionColumn="date_key" partitionIndex="1" timeColumn="" overwrite="true" partitionNum="0" dataSpeed="" dataVolume="">
+            </Model>
+        </Node>
+        <Node index="1004" uuid="af99a1f4-060b-4ae4-872d-f95d3f7cba7c" type="Compute" label="Step 2" x="312" y="13" width="130" height="75">
+            <Source name="source" uid="0" outputType="DStream" dataType="String">
+              <DataSource category="#OUTPUT" id="undefined" name="Out1" nodeId="0601a2e9-5857-47c0-8c59-10245f930497">
+                <Field name="data" label="data" type="string" isDimension="undefined" isMeasure="undefined" isArray="false" isOptional="false"/>
+              </DataSource>
+            </Source>
+            <Output name="out" uid="0" outputType="DStream" dataType="class:Step2_Class">
+              <Field name="data" label="data" type="string" clazz="" isArray="false" isOptional="false"/>
+              <Field name="date_key" label="date_key" type="string" clazz="" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model _caseClass="Step2_Class" isClassRef="false">
+              <Computes>
+                <Compute op="sleText" field="" arg="" value="data" outputType="string" alias="data" wordWarp="true"/>
+                <Compute op="sleText" field="*" arg="" value="substring(data,locate(&quot;date_key&quot;,data,1)+10,8)" outputType="string" alias="date_key" wordWarp="true"/>
+              </Computes>
+              <CheckboxStatus isChecked="true"/>
+            </Model>
+        </Node>
+        <Link srcId="0601a2e9-5857-47c0-8c59-10245f930497" srcPort="dout:0" tgtId="af99a1f4-060b-4ae4-872d-f95d3f7cba7c" tgtPort="in:0"/>
+        <Link srcId="af99a1f4-060b-4ae4-872d-f95d3f7cba7c" srcPort="out:0" tgtId="585923c7-7bba-4071-866d-02cb081db46b" tgtPort="in:0"/>
+      <Codes>
+      </Codes>
+      <Libraries>
+      </Libraries>
+      <Resources>
+      </Resources>
+      <Properties>[{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"input","label":"input","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"hdfs://hadoop:9000/kai/test750","enumSource":"","runtimeControl":false},{"editorType":"textInput","*":{"label":"label","desc":"desc"},"group":"common","name":"output","label":"output","type":"string","hidden":"false","disabled":false,"resolveProperty":false,"value":"viaops_incident_adhoc_plus_da","enumSource":"","runtimeControl":false}]</Properties>
+      <Types>[{"name":"Step4_Class","schema":[{"name":"data","label":"data","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false},{"name":"date_key","label":"date_key","type":"string","_isDimension":false,"_isMeasure":false,"clazz":"","_isArray":false,"_isOptional":false}]}]</Types>
+      </Flow>
+    </Flows>
+  </ModelInfo>
+</DataPipeModel>
