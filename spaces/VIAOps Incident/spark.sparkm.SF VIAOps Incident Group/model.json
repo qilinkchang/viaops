@@ -17,8 +17,8 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592472818067",
-  "owner": "vtbaadmin",
+  "lastDate": "1593324617488",
+  "owner": "viaops_admin",
   "properties": {
     "_RESOURCE_Description": "Subflow of incident (RT and Adhoc) grouping",
     "_RESOURCE_Type": "sparkm",

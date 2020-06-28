@@ -17,8 +17,8 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592982938881",
-  "owner": "vtbaadmin",
+  "lastDate": "1593324617470",
+  "owner": "viaops_admin",
   "properties": {
     "_RESOURCE_Description": "Adhoc processing for detecting and Identifying Incident in Anomaly table using \"score\" algorithm",
     "_RESOURCE_Type": "sparkm",

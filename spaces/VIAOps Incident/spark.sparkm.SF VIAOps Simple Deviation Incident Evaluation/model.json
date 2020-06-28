@@ -17,8 +17,8 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592792522842",
-  "owner": "vtbaadmin",
+  "lastDate": "1593324617482",
+  "owner": "viaops_admin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for simple deviation incident calculation.",
     "_RESOURCE_Type": "sparkm",

@@ -17,8 +17,8 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592792522854",
-  "owner": "vtbaadmin",
+  "lastDate": "1593324617496",
+  "owner": "viaops_admin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for simple threshold incident calculation.",
     "_RESOURCE_Type": "sparkm",

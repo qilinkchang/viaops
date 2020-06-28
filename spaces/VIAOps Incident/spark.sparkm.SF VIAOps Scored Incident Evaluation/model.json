@@ -17,8 +17,8 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592792522837",
-  "owner": "vtbaadmin",
+  "lastDate": "1593324617486",
+  "owner": "viaops_admin",
   "properties": {
     "_RESOURCE_Description": "Provide subflow for scored incident calculation.",
     "_RESOURCE_Type": "sparkm",

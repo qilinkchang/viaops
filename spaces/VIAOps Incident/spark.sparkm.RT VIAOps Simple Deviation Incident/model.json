@@ -17,8 +17,8 @@
       "name": "miniviewData"
     }
   ],
-  "lastDate": "1592792522831",
-  "owner": "vtbaadmin",
+  "lastDate": "1593324617501",
+  "owner": "viaops_admin",
   "properties": {
     "_RESOURCE_Description": "Detect and Identify Incident in Anomaly stream using \"Simple Deviation\" algorithm",
     "_RESOURCE_Type": "sparkm",
